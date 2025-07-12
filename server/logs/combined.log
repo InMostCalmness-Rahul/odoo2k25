@@ -467,3 +467,4 @@
 {"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:18:33.533Z"}
 {"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket fRLg0DV3aiZ2ilNLAAAD","service":"skillswap-api","timestamp":"2025-07-12T11:18:36.350Z"}
 {"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:19:00.678Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T11:26:05.180Z"}

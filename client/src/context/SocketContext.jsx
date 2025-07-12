@@ -35,7 +35,7 @@ export const SocketProvider = ({ children }) => {
   const initializeSocket = () => {
     if (socket?.connected) return;
 
-    const newSocket = io(import.meta.env.VITE_API_URL || 'http://localhost:5000', {
+    const newSocket = io(import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:5000', {
       auth: {
         token: localStorage.getItem('accessToken') // Use the correct token key
       },

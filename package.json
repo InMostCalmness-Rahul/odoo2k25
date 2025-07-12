@@ -2,7 +2,11 @@
   "name": "odoo2k25-root",
   "private": true,
   "scripts": {
-    "dev": "concurrently --raw \"npm run dev --prefix server\" \"npm run dev --prefix client\""
+    "dev": "concurrently --raw \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "cd client && npm install && npm run build",
+    "start": "cd server && npm start",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "deploy": "npm run install-all && npm run build"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

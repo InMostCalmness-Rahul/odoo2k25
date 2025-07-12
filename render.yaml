@@ -1,0 +1,44 @@
+services:
+  # Backend Service
+  - type: web
+    name: skillswap-backend
+    runtime: node
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: skillswap-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+    domains:
+      - skillswap-backend.onrender.com
+
+  # Frontend Service
+  - type: web
+    name: skillswap-frontend
+    runtime: static
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: ./client/dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://skillswap-backend.onrender.com/api
+
+databases:
+  - name: skillswap-db
+    databaseName: skillswap
+    user: skillswap
