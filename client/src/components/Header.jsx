@@ -8,7 +8,7 @@ import {
   UserIcon,
   MessageSquare,
   LogOut,
-} from 'lucide-react';
+  Shield} from 'lucide-react';
 import NotificationDropdown from './NotificationDropdown';
 
 export default function Header({ currentUser, onLogout }) {
@@ -16,13 +16,14 @@ export default function Header({ currentUser, onLogout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const navigation = [
-    { name: 'Home', path: '/', icon: Home },
-    ...(currentUser
-      ? [
-          { name: 'Profile', path: '/profile', icon: UserIcon },
-          { name: 'Requests', path: '/requests', icon: MessageSquare },
-        ]
-      : []),
+    { name: 'Home', page: 'home', icon: Home },
+    ...(currentUser ? [
+      { name: 'Profile', page: 'profile', icon: UserIcon },
+      { name: 'Requests', page: 'requests', icon: MessageSquare },
+      ...(currentUser.role === 'admin' ? [
+        { name: 'Admin', page: 'admin', icon: Shield }
+      ] : [])
+    ] : [])
   ];
 
   return (
