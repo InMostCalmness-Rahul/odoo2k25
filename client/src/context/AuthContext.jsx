@@ -9,8 +9,9 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [accessToken, setAccessToken] = useState(null);
 
-  // ✅ Load user from backend
+  // Load user from backend
   const loadUser = async () => {
     try {
       setIsLoading(true);
@@ -28,6 +29,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    // Check for existing token in localStorage
+    const storedToken = localStorage.getItem('accessToken');
+    if (storedToken) {
+      setAccessToken(storedToken);
+    }
     loadUser();
   }, []);
 
@@ -35,7 +41,15 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoading(true);
       setError(null);
-      await loginAPI({ email, password });
+      const response = await loginAPI({ email, password });
+      
+      // Extract access token and user from response
+      if (response.accessToken) {
+        setAccessToken(response.accessToken);
+        // Store token in localStorage for persistence across sessions
+        localStorage.setItem('accessToken', response.accessToken);
+      }
+      
       toast.success("Login successful!");
       await loadUser();
     } catch (err) {
@@ -50,7 +64,15 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoading(true);
       setError(null);
-      await signupAPI(userData);
+      const response = await signupAPI(userData);
+      
+      // Extract access token and user from response
+      if (response.accessToken) {
+        setAccessToken(response.accessToken);
+        // Store token in localStorage for persistence across sessions
+        localStorage.setItem('accessToken', response.accessToken);
+      }
+      
       toast.success("Signup successful!");
       await loadUser();
     } catch (err) {
@@ -66,6 +88,9 @@ export const AuthProvider = ({ children }) => {
       await logoutAPI();
       setUser(null);
       setIsAuthenticated(false);
+      setAccessToken(null);
+      // Clear token from localStorage
+      localStorage.removeItem('accessToken');
       toast.success("Logged out");
     } catch (err) {
       toast.error("Logout failed");
@@ -81,6 +106,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated,
         isLoading,
         error,
+        accessToken,
         login,
         signup,
         logout,

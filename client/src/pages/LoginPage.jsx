@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 // Move PasswordField outside the component to prevent re-creation on each render
@@ -33,18 +33,28 @@ const PasswordField = ({ id, label, value, setValue, show, setShow, placeholder 
   
 export default function LoginPage() {
   const navigate = useNavigate();
-  const { login, signup, isLoading } = useAuth();
+  const { login, signup, isLoading, isAuthenticated } = useAuth();
   
   const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  // Redirect to home if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
+
   const handleSubmit = async (e) => {
+    console.log('Submitting form:', { name, email, password, isLogin });
     e.preventDefault();
     if (!email || !password) return;
+    if (!isLogin && !name) return;
 
     if (!isLogin && password !== confirmPassword) {
       alert('Passwords do not match');
@@ -55,13 +65,13 @@ export default function LoginPage() {
       if (isLogin) {
         await login(email, password);
       } else {
-        await signup({ email, password });
+        await signup({ name, email, password });
       }
-      // Navigation will happen automatically via AuthContext and ProtectedRoute
-      navigate('/');
+      // Navigation will be handled by useEffect when isAuthenticated changes
     } catch (error) {
       // Error handling is done in AuthContext with toast
       console.error('Authentication error:', error);
+      // Don't navigate on error
     }
   };
 
@@ -87,6 +97,27 @@ export default function LoginPage() {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name (Signup only) */}
+            {!isLogin && (
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  Full Name
+                </label>
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    id="name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter your full name"
+                    required
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">

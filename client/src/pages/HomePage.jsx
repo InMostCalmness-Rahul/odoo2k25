@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { ChevronLeft, ChevronRight, Search, Filter, Users } from "lucide-react";
 import { usePagination, useDebounce } from '../hooks/useForm';
+import { useUsers } from '../hooks/useUsers';
 import { Button } from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
@@ -8,57 +9,45 @@ import { Input, Select } from '../components/ui/Input';
 import { EmptyState } from '../components/ui/Alert';
 import { CardSkeleton } from '../components/ui/LoadingSpinner';
 
-export default function HomePage({ currentUser, onNavigate, onSwapRequest }) {
+import { useAuth } from '../context/AuthContext';
+
+export default function HomePage({ onSwapRequest }) {
+  const { user } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [availability, setAvailability] = useState("");
   const [skillFilter, setSkillFilter] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const debouncedSearch = useDebounce(searchTerm, 300);
 
   const usersPerPage = 6;
 
-  // TODO: Replace with real API call
-  const mockUsers = [
-    {
-      id: "1",
-      name: "Marc Demo",
-      profilePhoto: "https://via.placeholder.com/80",
-      skillsOffered: ["JavaScript", "Python"],
-      skillsWanted: ["Photoshop", "Graphic Designer"],
-      rating: 3.9,
-    },
-    {
-      id: "2",
-      name: "Michell",
-      profilePhoto: "https://via.placeholder.com/80",
-      skillsOffered: ["Java", "C++"],
-      skillsWanted: ["UI/UX Design", "Motion Graphics"],
-      rating: 2.5,
-    },
-    {
-      id: "3",
-      name: "Joe Wills",
-      profilePhoto: "https://via.placeholder.com/80",
-      skillsOffered: ["HTML", "CSS"],
-      skillsWanted: ["Animation", "Video Editing"],
-      rating: 4.0,
-    },
-  ];
+  // Build search parameters
+  const searchParams = useMemo(() => {
+    const params = {
+      page: currentPage,
+      limit: usersPerPage,
+    };
 
-  // Filter and paginate
-  const filteredUsers = mockUsers.filter((u) =>
-    u.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-  const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
-  const paginatedUsers = filteredUsers.slice(
-    (currentPage - 1) * usersPerPage,
-    currentPage * usersPerPage
-  );
+    if (debouncedSearch) {
+      params.skill = debouncedSearch;
+    }
+    if (availability) {
+      params.availability = availability;
+    }
+    if (skillFilter) {
+      params.skill = skillFilter;
+    }
 
-  const handleSwapRequest = (user) => {
-    if (!currentUser) return onNavigate("login");
-    onSwapRequest(user);
+    return params;
+  }, [debouncedSearch, availability, skillFilter, currentPage]);
+
+  // Use real API data
+  const { users, loading, error, totalPages } = useUsers(searchParams);
+
+  const handleSwapRequest = (targetUser) => {
+    // Since this is wrapped in ProtectedRoute, user is guaranteed to exist
+    onSwapRequest(targetUser);
   };
 
   const SkillTags = ({ skills, color = "gray" }) => (
@@ -98,10 +87,27 @@ export default function HomePage({ currentUser, onNavigate, onSwapRequest }) {
 
       {/* User Cards */}
       <div className="space-y-4">
-        {paginatedUsers.length === 0 ? (
-          <p className="text-gray-500 text-center">No users found</p>
+        {loading ? (
+          // Show loading skeletons
+          Array.from({ length: usersPerPage }, (_, idx) => (
+            <CardSkeleton key={idx} />
+          ))
+        ) : error ? (
+          // Show error state
+          <div className="text-center py-8">
+            <p className="text-red-500 mb-4">{error}</p>
+            <Button onClick={() => window.location.reload()}>
+              Try Again
+            </Button>
+          </div>
+        ) : users.length === 0 ? (
+          <div className="text-center py-8">
+            <Users className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+            <p className="text-gray-500">No users found</p>
+            <p className="text-sm text-gray-400">Try adjusting your search criteria</p>
+          </div>
         ) : (
-          paginatedUsers.map((user) => (
+          users.map((user) => (
             <div
               key={user.id}
               className="flex justify-between items-center border rounded-lg px-4 py-3 bg-white shadow-sm"

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { MapPin, Star, MessageSquare, ArrowLeft, UserPlus } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getUserById, addFeedback } from '../api/user';
+import { createSwap } from '../api/swap';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
@@ -18,16 +19,31 @@ const UserProfileView = () => {
   const [profileUser, setProfileUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [showSwapModal, setShowSwapModal] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Determine if this is the current user's profile or another user's profile
+  const isOwnProfile = !userId; // If no userId param, it's the current user's profile
+  const targetUserId = userId || currentUser?._id;
 
   useEffect(() => {
-    fetchUserProfile();
-  }, [userId]);
+    if (targetUserId) {
+      fetchUserProfile();
+    }
+  }, [targetUserId]);
 
   const fetchUserProfile = async () => {
     try {
       setLoading(true);
-      const response = await getUserById(userId);
-      setProfileUser(response.user);
+      
+      if (isOwnProfile) {
+        // For own profile, use the current user data
+        setProfileUser(currentUser);
+      } else {
+        // For other users, fetch their profile
+        const response = await getUserById(targetUserId);
+        setProfileUser(response);
+      }
     } catch (error) {
       toast.error('Failed to load user profile');
       console.error('Error fetching user profile:', error);
@@ -38,12 +54,43 @@ const UserProfileView = () => {
 
   const handleSubmitFeedback = async (feedbackData) => {
     try {
-      await addFeedback(userId, feedbackData);
+      await addFeedback(targetUserId, feedbackData);
       // Refresh the profile to show new feedback
       await fetchUserProfile();
+      toast.success('Review submitted successfully!');
     } catch (error) {
+      console.error('Error submitting feedback:', error);
       throw error; // Re-throw to be handled by FeedbackModal
     }
+  };
+
+  const handleSendSwapRequest = async (swapData) => {
+    try {
+      setSubmitting(true);
+      await createSwap({
+        toUser: targetUserId,
+        offeredSkill: swapData.offeredSkill,
+        requestedSkill: swapData.requestedSkill,
+        message: swapData.message,
+        scheduledDate: swapData.scheduledDate,
+        duration: swapData.duration,
+        meetingType: swapData.meetingType,
+        meetingDetails: swapData.meetingDetails
+      });
+      toast.success('Swap request sent successfully!');
+      setShowSwapModal(false);
+    } catch (error) {
+      console.error('Error sending swap request:', error);
+      toast.error(error.response?.data?.error || 'Failed to send swap request');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const canSendSwapRequest = () => {
+    if (!currentUser || !profileUser) return false;
+    if (currentUser._id === profileUser._id) return false;
+    return currentUser.skillsOffered && currentUser.skillsOffered.length > 0;
   };
 
   const canLeaveFeedback = () => {
@@ -144,10 +191,16 @@ const UserProfileView = () => {
 
                 {/* Action Buttons */}
                 <div className="space-y-3">
-                  <Button className="w-full">
-                    <UserPlus className="w-4 h-4 mr-2" />
-                    Send Swap Request
-                  </Button>
+                  {canSendSwapRequest() && (
+                    <Button 
+                      onClick={() => setShowSwapModal(true)}
+                      disabled={submitting}
+                      className="w-full"
+                    >
+                      <UserPlus className="w-4 h-4 mr-2" />
+                      Send Swap Request
+                    </Button>
+                  )}
                   
                   {canLeaveFeedback() && (
                     <Button

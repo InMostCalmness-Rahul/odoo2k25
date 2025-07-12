@@ -33,7 +33,7 @@ class SocketManager {
           return next(new Error('Authentication error'));
         }
 
-        const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const user = await User.findById(decoded.userId).select('-password -refreshToken');
         
         if (!user || !user.isActive) {

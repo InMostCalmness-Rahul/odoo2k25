@@ -2,21 +2,31 @@ import React, { useState } from 'react';
 import {
   Clock, Check, X, User as UserIcon, Calendar, MessageSquare
 } from 'lucide-react';
+import { useSwapRequests } from '../hooks/useSwapRequests';
+import { CardSkeleton } from '../components/ui/LoadingSpinner';
 
 export default function RequestsPage({ user, onNavigate }) {
   const [activeTab, setActiveTab] = useState('received');
+  const { requests, loading, error, updateRequest, deleteRequest } = useSwapRequests();
 
-  const mockReceivedRequests = [
-    // ... unchanged
-  ];
+  // Filter requests based on active tab
+  const receivedRequests = requests.filter(req => req.toUser === user?.id || req.toUser?._id === user?.id);
+  const sentRequests = requests.filter(req => req.fromUser === user?.id || req.fromUser?._id === user?.id);
 
-  const mockSentRequests = [
-    // ... unchanged
-  ];
+  const handleRequestAction = async (requestId, action, additionalData = {}) => {
+    try {
+      await updateRequest(requestId, action, additionalData);
+    } catch (err) {
+      console.error(`Failed to ${action} request:`, err);
+    }
+  };
 
-  const handleRequestAction = (requestId, action) => {
-    console.log(`${action} request ${requestId}`);
-    // Implement API call to accept/reject
+  const handleDeleteRequest = async (requestId) => {
+    try {
+      await deleteRequest(requestId);
+    } catch (err) {
+      console.error('Failed to delete request:', err);
+    }
   };
 
   const formatDate = (dateStr) =>
@@ -145,7 +155,7 @@ export default function RequestsPage({ user, onNavigate }) {
     </div>
   );
 
-  const activeRequests = activeTab === 'received' ? mockReceivedRequests : mockSentRequests;
+  const activeRequests = activeTab === 'received' ? receivedRequests : sentRequests;
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -169,7 +179,7 @@ export default function RequestsPage({ user, onNavigate }) {
             >
               {tab === 'received' ? 'Received Requests' : 'Sent Requests'}
               <span className="ml-2 bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs">
-                {tab === 'received' ? mockReceivedRequests.length : mockSentRequests.length}
+                {tab === 'received' ? receivedRequests.length : sentRequests.length}
               </span>
             </button>
           ))}
@@ -178,11 +188,29 @@ export default function RequestsPage({ user, onNavigate }) {
 
       {/* Requests */}
       <div className="space-y-6">
-        {activeRequests.length > 0
-          ? activeRequests.map((request) =>
-              <RequestCard key={request.id} request={request} isReceived={activeTab === 'received'} />
-            )
-          : renderEmptyState(activeTab)}
+        {loading ? (
+          // Show loading skeletons
+          Array.from({ length: 3 }, (_, idx) => (
+            <CardSkeleton key={idx} />
+          ))
+        ) : error ? (
+          // Show error state
+          <div className="text-center py-8">
+            <p className="text-red-500 mb-4">{error}</p>
+            <button 
+              onClick={() => window.location.reload()}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            >
+              Try Again
+            </button>
+          </div>
+        ) : activeRequests.length > 0 ? (
+          activeRequests.map((request) =>
+            <RequestCard key={request._id || request.id} request={request} isReceived={activeTab === 'received'} />
+          )
+        ) : (
+          renderEmptyState(activeTab)
+        )}
       </div>
     </div>
   );

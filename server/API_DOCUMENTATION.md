@@ -46,13 +46,22 @@ Register a new user account.
 **Request Body:**
 ```json
 {
+  "name": "John Doe",                    // Required: 2-100 characters, letters and spaces only
+  "email": "john@example.com",           // Required: Valid email address
+  "password": "Password123",             // Required: Min 6 chars, must contain lowercase, uppercase, and number
+  "location": "New York, NY",            // Optional: Max 200 characters
+  "skillsOffered": ["JavaScript"],       // Optional: Array of strings, max 20 skills, 100 chars each
+  "skillsWanted": ["Photography"],       // Optional: Array of strings, max 20 skills, 100 chars each
+  "availability": ["weekends"]           // Optional: Array from: weekdays, weekends, evenings, mornings, afternoons, flexible
+}
+```
+
+**Minimal Request Body (only required fields):**
+```json
+{
   "name": "John Doe",
-  "email": "john@example.com",
-  "password": "Password123",
-  "location": "New York, NY",
-  "skillsOffered": ["JavaScript", "Guitar"],
-  "skillsWanted": ["Photography", "Spanish"],
-  "availability": ["weekends", "evenings"]
+  "email": "john@example.com", 
+  "password": "Password123"
 }
 ```
 

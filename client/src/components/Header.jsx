@@ -8,7 +8,8 @@ import {
   UserIcon,
   MessageSquare,
   LogOut,
-  Shield} from 'lucide-react';
+  Shield,
+  Search} from 'lucide-react';
 import NotificationDropdown from './NotificationDropdown';
 
 export default function Header({ currentUser, onLogout }) {
@@ -16,12 +17,13 @@ export default function Header({ currentUser, onLogout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const navigation = [
-    { name: 'Home', page: 'home', icon: Home },
+    { name: 'Home', path: '/', icon: Home },
     ...(currentUser ? [
-      { name: 'Profile', page: 'profile', icon: UserIcon },
-      { name: 'Requests', page: 'requests', icon: MessageSquare },
+      { name: 'Browse', path: '/browse', icon: Search },
+      { name: 'Profile', path: '/profile', icon: UserIcon },
+      { name: 'Requests', path: '/requests', icon: MessageSquare },
       ...(currentUser.role === 'admin' ? [
-        { name: 'Admin', page: 'admin', icon: Shield }
+        { name: 'Admin', path: '/admin', icon: Shield }
       ] : [])
     ] : [])
   ];
@@ -61,11 +63,17 @@ export default function Header({ currentUser, onLogout }) {
                 <NotificationDropdown />
                 
                 <div className="flex items-center space-x-2">
-                  <img
-                    src={currentUser.profilePhoto}
-                    alt={currentUser.name}
-                    className="w-8 h-8 rounded-full object-cover"
-                  />
+                  {currentUser.profilePhoto ? (
+                    <img
+                      src={currentUser.profilePhoto}
+                      alt={currentUser.name}
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+                      <UserIcon className="w-4 h-4 text-gray-600" />
+                    </div>
+                  )}
                   <span className="text-sm font-medium text-gray-700">{currentUser.name}</span>
                 </div>
                 <button
@@ -121,11 +129,17 @@ export default function Header({ currentUser, onLogout }) {
               {currentUser ? (
                 <>
                   <div className="flex items-center space-x-3 px-3 py-2 border-t border-gray-200 mt-4 pt-4">
-                    <img
-                      src={currentUser.profilePhoto}
-                      alt={currentUser.name}
-                      className="w-8 h-8 rounded-full object-cover"
-                    />
+                    {currentUser.profilePhoto ? (
+                      <img
+                        src={currentUser.profilePhoto}
+                        alt={currentUser.name}
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+                        <UserIcon className="w-4 h-4 text-gray-600" />
+                      </div>
+                    )}
                     <span className="text-sm font-medium text-gray-700">{currentUser.name}</span>
                   </div>
                   <button

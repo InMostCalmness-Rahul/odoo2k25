@@ -13,7 +13,6 @@ import Home from './pages/HomePage';
 import Login from './pages/LoginPage';
 
 import Signup from './pages/Signup';
-import Profile from './pages/ProfilePage';
 import Requests from './pages/RequestsPage';
 import Browse from './pages/Browse';
 import UserProfileView from './pages/UserProfileView';
@@ -22,10 +21,7 @@ import AdminDashboard from './pages/AdminDashboard';
 function App() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
-  const [currentPage, setCurrentPage] = useState('home');
-  const [currentUser, setCurrentUser] = useState(null);
-
-
+  
   const [showSwapModal, setShowSwapModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
 
@@ -34,34 +30,9 @@ function App() {
     setShowSwapModal(true);
   };
 
-  const handleNavigate = (page) => {
-    navigate(`/${page}`);
-  };
-
-  const handleLogin = (email, password) => {
-    // Mock login - in real app, this would call an API
-    const mockUser = {
-      id: '1',
-      name: 'Alex Johnson',
-      email: email,
-      role: email === 'admin@skillswap.com' ? 'admin' : 'user',
-      profilePhoto: 'https://images.pexels.com/photos/3782179/pexels-photo-3782179.jpeg?auto=compress&cs=tinysrgb&w=150',
-      skillsOffered: ['Web Development', 'UI/UX Design'],
-      skillsWanted: ['Photography', 'Content Writing'],
-      rating: 4.8,
-      location: 'San Francisco, CA'
-    };
-    setCurrentUser(mockUser);
-    setCurrentPage('home');
-  };
-const handleLogout = () => {
-    setCurrentUser(null);
-    setCurrentPage('home');
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header currentUser={user} onNavigate={handleNavigate} onLogout={logout} />
+      <Header currentUser={user} onLogout={logout} />
 
       <main className="container mx-auto pt-16 px-4 py-8">
         <Routes>
@@ -79,15 +50,16 @@ const handleLogout = () => {
           <Route
             path="/admin"
             element={
-              currentUser && currentUser.role === 'admin' ? (
-                <AdminDashboard currentUser={currentUser} onNavigate={setCurrentPage} />
-              ) : (
-                <div className="text-center">
-                  <p className="text-lg font-semibold">Unauthorized Access</p>
-                  <p className="text-gray-600">You must be an admin to view this page.</p>
-                  <Login onLogin={handleLogin} onNavigate={setCurrentPage} />
-                </div>
-              )
+              <ProtectedRoute>
+                {user && user.role === 'admin' ? (
+                  <AdminDashboard />
+                ) : (
+                  <div className="text-center">
+                    <p className="text-lg font-semibold">Unauthorized Access</p>
+                    <p className="text-gray-600">You must be an admin to view this page.</p>
+                  </div>
+                )}
+              </ProtectedRoute>
             }
           />
 
@@ -95,7 +67,7 @@ const handleLogout = () => {
             path="/profile"
             element={
               <ProtectedRoute>
-                <Profile />
+                <UserProfileView />
               </ProtectedRoute>
             }
           />

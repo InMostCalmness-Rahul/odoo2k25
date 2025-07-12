@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
   const fetchUserProfile = async () => {
     try {
       setIsUserLoading(true);
-      const data = await getProfileAPI();
+      const data = await getProfile();
       setProfile(data);
     } catch (err) {
       console.error(err);
