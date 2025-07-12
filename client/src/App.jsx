@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { RequestsPage } from './pages/RequestsPage';
 import { SwapRequestModal } from './components/SwapRequestModal';
-import { AdminDashboard } from './pages/AdminDashboard';
+import { notifyLoginSuccess, notifyLogout, notifySwapRequest } from './utils/toast';
+
+function AppWrapper() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}
 
 function App() {
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+
   const [currentPage, setCurrentPage] = useState('home');
   const [currentUser, setCurrentUser] = useState(null);
   const [showSwapModal, setShowSwapModal] = useState(false);
@@ -84,10 +99,12 @@ function App() {
       <main className="pt-16">
         {renderPage()}
       </main>
+
+      {showSwapModal && selectedUser && user && (
       
       {showSwapModal && selectedUser && currentUser && (
         <SwapRequestModal
-          fromUser={currentUser}
+          fromUser={user}
           toUser={selectedUser}
           onClose={() => setShowSwapModal(false)}
           onSubmit={() => {

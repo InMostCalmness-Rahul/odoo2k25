@@ -1,56 +1,97 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
+import { loginAPI, signupAPI, logoutAPI, getMeAPI } from "../api/auth";
+import { toast } from "react-toastify";
 
-// Minimal AuthContext boilerplate
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  // Placeholder state, replace with real logic
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Placeholder auth actions
+  // ✅ Load user from backend
+  const loadUser = async () => {
+    try {
+      setIsLoading(true);
+      const user = await getMeAPI(); // ✅ fixed
+      setUser(user);
+      setIsAuthenticated(true);
+    } catch (err) {
+      setUser(null);
+      setIsAuthenticated(false);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadUser();
+  }, []);
+
   const login = async (email, password) => {
-    // TODO: Implement login logic
-    setIsAuthenticated(true);
-    setUser({ name: 'Demo User', email });
+    try {
+      setIsLoading(true);
+      setError(null);
+      await loginAPI({ email, password });
+      toast.success("Login successful!");
+      await loadUser();
+    } catch (err) {
+      toast.error(err?.response?.data?.message || "Login failed");
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const signup = async (userData) => {
-    // TODO: Implement signup logic
-    setIsAuthenticated(true);
-    setUser(userData);
+    try {
+      setIsLoading(true);
+      setError(null);
+      await signupAPI(userData);
+      toast.success("Signup successful!");
+      await loadUser();
+    } catch (err) {
+      toast.error(err?.response?.data?.message || "Signup failed");
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const logout = async () => {
-    // TODO: Implement logout logic
-    setIsAuthenticated(false);
-    setUser(null);
+    try {
+      await logoutAPI();
+      setUser(null);
+      setIsAuthenticated(false);
+      toast.success("Logged out");
+    } catch (err) {
+      toast.error("Logout failed");
+    }
   };
 
-  const value = {
-    user,
-    isAuthenticated,
-    isLoading,
-    error,
-    login,
-    signup,
-    logout,
-    // Add more actions as needed
-  };
+  const refreshAuth = loadUser; // For other contexts/hooks to call if needed
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider
+      value={{
+        user,
+        isAuthenticated,
+        isLoading,
+        error,
+        login,
+        signup,
+        logout,
+        refreshAuth, // optional: exposed for reuse
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
 export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error("useAuth must be used inside AuthProvider");
+  return ctx;
 };

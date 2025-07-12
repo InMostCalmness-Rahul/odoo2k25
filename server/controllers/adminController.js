@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const SwapRequest = require('../models/SwapRequest');
 const logger = require('../utils/logger');
+const { deleteImage, extractPublicId } = require('../config/cloudinary');
 
 // Get all users (admin only)
 const getAllUsers = async (req, res) => {
@@ -369,6 +370,20 @@ const deleteUser = async (req, res) => {
         success: false,
         error: 'Cannot delete other administrators'
       });
+    }
+
+    // Delete profile photo if it exists
+    if (user.profilePhoto) {
+      const publicId = extractPublicId(user.profilePhoto);
+      if (publicId) {
+        try {
+          await deleteImage(publicId);
+          logger.info(`Profile photo deleted for admin user deletion: ${user.email}`);
+        } catch (error) {
+          logger.warn(`Failed to delete profile photo during admin deletion: ${error.message}`);
+          // Continue with user deletion even if photo deletion fails
+        }
+      }
     }
 
     // Delete related swap requests

@@ -1,289 +1,188 @@
 import React, { useState } from 'react';
-import { Clock, Check, X, User as UserIcon, Calendar, MessageSquare, Mail, Phone, Users } from 'lucide-react';
-import { Button } from '../components/ui/Button';
-import { Card, CardHeader, CardContent } from '../components/ui/Card';
-import { Badge } from '../components/ui/Badge';
-import { EmptyState } from '../components/ui/Alert';
-import { notifySwapAccepted, notifySwapRejected } from '../utils/toast';
-import { formatRelativeTime } from '../utils/helpers';
+import {
+  Clock, Check, X, User as UserIcon, Calendar, MessageSquare
+} from 'lucide-react';
 
-export function RequestsPage({ user, onNavigate }) {
+export default function RequestsPage({ user, onNavigate }) {
   const [activeTab, setActiveTab] = useState('received');
 
   const mockReceivedRequests = [
-    {
-      id: '1',
-      from: {
-        id: '2',
-        name: 'Sarah Chen',
-        email: 'sarah@example.com',
-        profilePhoto: 'https://images.pexels.com/photos/3783830/pexels-photo-3783830.jpeg?auto=compress&cs=tinysrgb&w=150',
-        skillsOffered: ['Photography', 'Photo Editing'],
-        skillsWanted: ['Web Development', 'SEO'],
-        rating: 4.9,
-        location: 'New York, NY'
-      },
-      to: user,
-      offeredSkill: 'Photography',
-      requestedSkill: 'Web Development',
-      message: 'Hi Alex! I\'d love to learn web development from you. In exchange, I can teach you professional photography techniques and photo editing. Let me know if you\'re interested!',
-      status: 'pending',
-      createdAt: '2024-01-20T10:30:00Z'
-    },
-    {
-      id: '2',
-      from: {
-        id: '3',
-        name: 'Mike Rodriguez',
-        email: 'mike@example.com',
-        profilePhoto: 'https://images.pexels.com/photos/3763152/pexels-photo-3763152.jpeg?auto=compress&cs=tinysrgb&w=150',
-        skillsOffered: ['Content Writing', 'Copywriting'],
-        skillsWanted: ['Graphic Design', 'Illustration'],
-        rating: 4.7,
-        location: 'Austin, TX'
-      },
-      to: user,
-      offeredSkill: 'Content Writing',
-      requestedSkill: 'UI/UX Design',
-      message: 'Hey! I saw your UX design skills and I\'m really interested in learning. I\'m a professional copywriter and would love to help you with content strategy in return.',
-      status: 'accepted',
-      createdAt: '2024-01-18T14:15:00Z'
-    }
+    // ... unchanged
   ];
 
   const mockSentRequests = [
-    {
-      id: '3',
-      from: user,
-      to: {
-        id: '4',
-        name: 'Emily Foster',
-        email: 'emily@example.com',
-        profilePhoto: 'https://images.pexels.com/photos/3812944/pexels-photo-3812944.jpeg?auto=compress&cs=tinysrgb&w=150',
-        skillsOffered: ['Graphic Design', 'UI/UX Design'],
-        skillsWanted: ['Digital Marketing', 'Social Media'],
-        rating: 4.8,
-        location: 'Seattle, WA'
-      },
-      offeredSkill: 'Web Development',
-      requestedSkill: 'Graphic Design',
-      message: 'Hi Emily! I\'m a web developer looking to improve my graphic design skills. I\'d be happy to help you with any web development projects in exchange!',
-      status: 'pending',
-      createdAt: '2024-01-19T16:20:00Z'
-    }
+    // ... unchanged
   ];
 
-  const handleRequestAction = (requestId, action, requesterName) => {
-    // In a real app, this would update the request status via API
+  const handleRequestAction = (requestId, action) => {
     console.log(`${action} request ${requestId}`);
-    
-    if (action === 'accept') {
-      notifySwapAccepted(requesterName);
-    } else if (action === 'reject') {
-      notifySwapRejected(requesterName);
-    }
+    // Implement API call to accept/reject
   };
 
-  const formatDate = (dateString) => {
-    return formatRelativeTime(dateString);
-  };
+  const formatDate = (dateStr) =>
+    new Date(dateStr).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
 
   const getStatusBadge = (status) => {
-    switch (status) {
-      case 'pending':
-        return (
-          <Badge variant="warning" className="flex items-center gap-1">
-            <Clock className="w-3 h-3" />
-            Pending
-          </Badge>
-        );
-      case 'accepted':
-        return (
-          <Badge variant="success" className="flex items-center gap-1">
-            <Check className="w-3 h-3" />
-            Accepted
-          </Badge>
-        );
-      case 'rejected':
-        return (
-          <Badge variant="danger" className="flex items-center gap-1">
-            <X className="w-3 h-3" />
-            Rejected
-          </Badge>
-        );
-      default:
-        return null;
-    }
+    const badgeStyles = {
+      pending: { text: 'Pending', icon: <Clock />, bg: 'bg-yellow-100', textColor: 'text-yellow-800' },
+      accepted: { text: 'Accepted', icon: <Check />, bg: 'bg-green-100', textColor: 'text-green-800' },
+      rejected: { text: 'Rejected', icon: <X />, bg: 'bg-red-100', textColor: 'text-red-800' },
+    }[status];
+
+    if (!badgeStyles) return null;
+
+    return (
+      <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${badgeStyles.bg} ${badgeStyles.textColor}`}>
+        {React.cloneElement(badgeStyles.icon, { className: 'w-4 h-4 mr-1' })}
+        {badgeStyles.text}
+      </span>
+    );
   };
 
-  const renderRequestCard = (request, isReceived) => (
-    <Card key={request.id} className="p-6 hover:shadow-lg transition-shadow">
-      {/* Request Header */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center space-x-3">
-          <img
-            src={isReceived ? request.from.profilePhoto : request.to.profilePhoto}
-            alt={isReceived ? request.from.name : request.to.name}
-            className="w-12 h-12 rounded-full object-cover"
-          />
+  const RequestCard = ({ request, isReceived }) => {
+    const counterpart = isReceived ? request.from : request.to;
+
+    return (
+      <div key={request.id} className="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition-shadow">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-3">
+            <img
+              src={counterpart.profilePhoto}
+              alt={counterpart.name}
+              className="w-12 h-12 rounded-full object-cover"
+            />
+            <div>
+              <h3 className="font-semibold text-gray-900">{counterpart.name}</h3>
+              <div className="flex items-center space-x-1 text-sm text-gray-500">
+                <Calendar className="w-4 h-4" />
+                <span>{formatDate(request.createdAt)}</span>
+              </div>
+            </div>
+          </div>
+          {getStatusBadge(request.status)}
+        </div>
+
+        {/* Skills Exchange */}
+        <div className="bg-gray-50 rounded-lg p-4 mb-4 grid grid-cols-1 md:grid-cols-3 items-center text-center gap-4">
           <div>
-            <h3 className="font-semibold text-gray-900">
-              {isReceived ? request.from.name : request.to.name}
-            </h3>
-            <p className="text-sm text-gray-600">{formatDate(request.createdAt)}</p>
+            <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">{request.skillOffered}</div>
+            <p className="text-xs text-gray-500 mt-1">{isReceived ? 'They offer' : 'You offer'}</p>
+          </div>
+          <div>
+            <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mx-auto">
+              <span className="text-gray-600">⇄</span>
+            </div>
+          </div>
+          <div>
+            <div className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium">{request.skillWanted}</div>
+            <p className="text-xs text-gray-500 mt-1">{isReceived ? 'They want' : 'You want'}</p>
           </div>
         </div>
-        {getStatusBadge(request.status)}
-      </div>
 
-      {/* Skill Exchange */}
-      <div className="bg-gradient-to-r from-blue-50 to-emerald-50 rounded-lg p-4 mb-4">
-        <div className="flex items-center justify-between">
-          <div className="text-center">
-            <Badge variant="primary" className="mb-1">
-              {request.offeredSkill}
-            </Badge>
-            <p className="text-xs text-gray-600">
-              {isReceived ? 'They offer' : 'You offered'}
-            </p>
+        {/* Message */}
+        <div className="mb-4">
+          <div className="flex items-center space-x-2 mb-2">
+            <MessageSquare className="w-4 h-4 text-gray-500" />
+            <span className="text-sm font-medium text-gray-700">Message</span>
           </div>
-          <div className="text-2xl text-gray-400">⇄</div>
-          <div className="text-center">
-            <Badge variant="success" className="mb-1">
-              {request.requestedSkill}
-            </Badge>
-            <p className="text-xs text-gray-600">
-              {isReceived ? 'They want' : 'You requested'}
-            </p>
+          <p className="text-gray-600 text-sm bg-gray-50 p-3 rounded-lg">{request.message}</p>
+        </div>
+
+        {/* Action Buttons */}
+        {isReceived && request.status === 'pending' && (
+          <div className="flex space-x-3">
+            <button
+              onClick={() => handleRequestAction(request.id, 'accept')}
+              className="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 flex items-center justify-center space-x-2"
+            >
+              <Check className="w-4 h-4" />
+              <span>Accept</span>
+            </button>
+            <button
+              onClick={() => handleRequestAction(request.id, 'reject')}
+              className="flex-1 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 flex items-center justify-center space-x-2"
+            >
+              <X className="w-4 h-4" />
+              <span>Decline</span>
+            </button>
           </div>
-        </div>
+        )}
       </div>
+    );
+  };
 
-      {/* Message */}
-      <div className="mb-4">
-        <div className="bg-gray-50 rounded-lg p-3">
-          <p className="text-sm text-gray-700">{request.message}</p>
-        </div>
+  const renderEmptyState = (type) => (
+    <div className="text-center py-12">
+      <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        {type === 'received' ? (
+          <UserIcon className="w-12 h-12 text-gray-400" />
+        ) : (
+          <MessageSquare className="w-12 h-12 text-gray-400" />
+        )}
       </div>
-
-      {/* Actions */}
-      {isReceived && request.status === 'pending' && (
-        <div className="flex space-x-3">
-          <Button
-            variant="success"
-            size="sm"
-            icon={Check}
-            onClick={() => handleRequestAction(request.id, 'accept', request.from.name)}
-            className="flex-1"
-          >
-            Accept
-          </Button>
-          <Button
-            variant="danger"
-            size="sm"
-            icon={X}
-            onClick={() => handleRequestAction(request.id, 'reject', request.from.name)}
-            className="flex-1"
-          >
-            Decline
-          </Button>
-        </div>
+      <h3 className="text-lg font-medium text-gray-900 mb-2">
+        No requests {type === 'received' ? 'received' : 'sent'}
+      </h3>
+      <p className="text-gray-600 mb-4">
+        {type === 'received'
+          ? "When people request to swap skills with you, they'll appear here."
+          : 'Start connecting with people by sending skill swap requests.'}
+      </p>
+      {type === 'sent' && (
+        <button
+          onClick={() => onNavigate('home')}
+          className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+        >
+          Browse Skills
+        </button>
       )}
-
-      {request.status === 'accepted' && (
-        <div className="flex items-center justify-between bg-green-50 rounded-lg p-3">
-          <p className="text-sm text-green-700">
-            🎉 Swap request accepted! Time to start learning.
-          </p>
-          <div className="flex space-x-2">
-            <Button size="sm" variant="outline" icon={Mail}>
-              Message
-            </Button>
-            <Button size="sm" variant="outline" icon={Phone}>
-              Contact
-            </Button>
-          </div>
-        </div>
-      )}
-    </Card>
+    </div>
   );
 
-  const receivedRequests = mockReceivedRequests;
-  const sentRequests = mockSentRequests;
+  const activeRequests = activeTab === 'received' ? mockReceivedRequests : mockSentRequests;
 
   return (
-    <div className="max-w-4xl mx-auto py-6 px-4">
-      {/* Header */}
-      <div className="mb-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <header className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Swap Requests</h1>
-        <p className="text-gray-600">
-          Manage your incoming and outgoing skill exchange requests
-        </p>
+        <p className="text-gray-600">Manage your skill exchange requests and build your learning network.</p>
+      </header>
+
+      {/* Tabs */}
+      <div className="bg-white rounded-xl shadow-sm border mb-8">
+        <div className="flex border-b border-gray-200">
+          {['received', 'sent'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`flex-1 px-6 py-4 text-sm font-medium text-center transition-colors ${
+                activeTab === tab
+                  ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              {tab === 'received' ? 'Received Requests' : 'Sent Requests'}
+              <span className="ml-2 bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs">
+                {tab === 'received' ? mockReceivedRequests.length : mockSentRequests.length}
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Tab Navigation */}
-      <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg mb-6">
-        <button
-          onClick={() => setActiveTab('received')}
-          className={`flex-1 py-2 px-4 text-sm font-medium rounded-md transition-colors ${
-            activeTab === 'received'
-              ? 'bg-white text-blue-600 shadow-sm'
-              : 'text-gray-700 hover:text-gray-900'
-          }`}
-        >
-          <div className="flex items-center justify-center space-x-2">
-            <MessageSquare className="w-4 h-4" />
-            <span>Received ({receivedRequests.length})</span>
-          </div>
-        </button>
-        <button
-          onClick={() => setActiveTab('sent')}
-          className={`flex-1 py-2 px-4 text-sm font-medium rounded-md transition-colors ${
-            activeTab === 'sent'
-              ? 'bg-white text-blue-600 shadow-sm'
-              : 'text-gray-700 hover:text-gray-900'
-          }`}
-        >
-          <div className="flex items-center justify-center space-x-2">
-            <UserIcon className="w-4 h-4" />
-            <span>Sent ({sentRequests.length})</span>
-          </div>
-        </button>
-      </div>
-
-      {/* Request Lists */}
-      <div className="space-y-4">
-        {activeTab === 'received' ? (
-          receivedRequests.length === 0 ? (
-            <EmptyState
-              icon={MessageSquare}
-              title="No requests received"
-              description="When someone wants to exchange skills with you, their requests will appear here."
-              action={
-                <Button onClick={() => onNavigate('home')} variant="primary">
-                  Browse People
-                </Button>
-              }
-            />
-          ) : (
-            receivedRequests.map(request => renderRequestCard(request, true))
-          )
-        ) : (
-          sentRequests.length === 0 ? (
-            <EmptyState
-              icon={Users}
-              title="No requests sent"
-              description="Start browsing profiles and send skill exchange requests to begin learning!"
-              action={
-                <Button onClick={() => onNavigate('home')} variant="primary">
-                  Find People
-                </Button>
-              }
-            />
-          ) : (
-            sentRequests.map(request => renderRequestCard(request, false))
-          )
-        )}
+      {/* Requests */}
+      <div className="space-y-6">
+        {activeRequests.length > 0
+          ? activeRequests.map((request) =>
+              <RequestCard key={request.id} request={request} isReceived={activeTab === 'received'} />
+            )
+          : renderEmptyState(activeTab)}
       </div>
     </div>
   );

@@ -37,7 +37,7 @@ Register a new user account.
 {
   "name": "John Doe",
   "email": "john@example.com",
-  "password": "password123",
+  "password": "Password123",
   "location": "New York, NY",
   "skillsOffered": ["JavaScript", "Guitar"],
   "skillsWanted": ["Photography", "Spanish"],
@@ -62,7 +62,7 @@ Authenticate a user and get access token.
 ```json
 {
   "email": "john@example.com",
-  "password": "password123"
+  "password": "Password123"
 }
 ```
 
@@ -103,7 +103,7 @@ Refresh access token using refresh token (sent via HTTP-only cookie).
 
 ## 👤 User Endpoints
 
-### GET /user/me
+### GET /users/me
 Get current user's profile (requires authentication).
 
 **Response:**
@@ -125,7 +125,7 @@ Get current user's profile (requires authentication).
 }
 ```
 
-### PUT /user/update
+### PUT /users/me
 Update current user's profile (requires authentication).
 
 **Request Body:**
@@ -140,12 +140,73 @@ Update current user's profile (requires authentication).
 }
 ```
 
-### POST /user/upload-photo
-Upload profile photo (requires authentication).
+### POST /users/upload-photo
+Upload a profile photo for the authenticated user.
 
-**Request:** Multipart form data with `profilePhoto` field containing image file.
+**Authentication:**
+Bearer JWT required in `Authorization` header.
 
-### DELETE /user/delete
+**Request:**
+- `multipart/form-data` with a single file field:
+  - `profilePhoto` (file, required): JPG, JPEG, PNG, GIF, WEBP, max 5MB
+  - Will be auto-resized to 500x500px, face detection crop
+
+**Response:**
+On success:
+```json
+{
+  "success": true,
+  "message": "Profile photo uploaded successfully",
+  "profilePhoto": "https://res.cloudinary.com/your-cloud/image/upload/v1234567890/skillswap/profiles/profile_userId_timestamp.jpg",
+  "user": {
+    "_id": "user_id",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "profilePhoto": "https://res.cloudinary.com/your-cloud/image/upload/v1234567890/skillswap/profiles/profile_userId_timestamp.jpg"
+    // ... other user fields
+  }
+}
+```
+On error:
+```json
+{
+  "success": false,
+  "error": "<error message>"
+}
+```
+
+**Features:**
+- Auto-optimization, CDN delivery
+- Face detection cropping
+- Old photo auto-deleted on new upload
+- Previous photo deleted on account deletion
+
+**Usage Example (Axios):**
+```js
+const formData = new FormData();
+formData.append('profilePhoto', file);
+const response = await axios.post('/api/users/upload-photo', formData, {
+  headers: {
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'multipart/form-data'
+  }
+});
+```
+
+**Usage Example (cURL):**
+```bash
+curl -X POST \
+  http://localhost:5000/api/users/upload-photo \
+  -H "Authorization: Bearer <access_token>" \
+  -F "profilePhoto=@/path/to/photo.jpg"
+```
+
+**Notes:**
+- Photos are stored in `skillswap/profiles` on Cloudinary
+- All uploads include a timestamp for unique filenames
+- The profile photo URL is updated in the user's profile
+
+### DELETE /users/me
 Delete user account (soft delete - requires authentication).
 
 ### GET /users
