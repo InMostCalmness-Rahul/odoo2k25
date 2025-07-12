@@ -7,42 +7,53 @@ import { Input } from '../components/ui/Input';
 import { Alert } from '../components/ui/Alert';
 import { showToast } from '../utils/toast';
 
-export function LoginPage({ onLogin, onNavigate }) {
+export default function LoginPage({ onLogin, onNavigate }) {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [submitError, setSubmitError] = useState('');
 
-  const schema = isLogin ? loginSchema : signupSchema;
-  const form = useValidatedForm(schema);
-
-  const handleSubmit = async (data) => {
-    try {
-      setSubmitError('');
-      
-      if (isLogin) {
-        await onLogin(data.email, data.password);
-      } else {
-        // For signup, we'll just switch to login for now
-        showToast.success('Account created successfully! Please sign in.');
-        setIsLogin(true);
-        form.reset();
-      }
-    } catch (error) {
-      setSubmitError(error.message || 'An error occurred. Please try again.');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email || !password) return;
+    if (!isLogin && password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
     }
+    onLogin(email, password);
   };
 
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-    setSubmitError('');
-    form.reset();
-  };
+  const PasswordField = ({ id, label, value, setValue, show, setShow, placeholder }) => (
+    <div>
+      <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-2">
+        {label}
+      </label>
+      <div className="relative">
+        <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <input
+          id={id}
+          type={show ? 'text' : 'password'}
+          required
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder={placeholder}
+          className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+        <button
+          type="button"
+          onClick={() => setShow(!show)}
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+        >
+          {show ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         <div className="bg-white rounded-2xl shadow-xl p-8">
+          
           {/* Header */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -54,78 +65,54 @@ export function LoginPage({ onLogin, onNavigate }) {
             <p className="text-gray-600 mt-2">
               {isLogin 
                 ? 'Sign in to continue your skill exchange journey' 
-                : 'Create an account to start exchanging skills'
-              }
+                : 'Create an account to start exchanging skills'}
             </p>
           </div>
 
           {/* Form */}
-          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-            {submitError && (
-              <Alert type="error" title="Error">
-                {submitError}
-              </Alert>
-            )}
-
-            {/* Name Field (Register only) */}
-            {!isLogin && (
-              <Input
-                label="Full Name"
-                icon={Mail}
-                {...form.register('name')}
-                error={form.formState.errors.name?.message}
-                placeholder="Enter your full name"
-              />
-            )}
-
-            {/* Email Field */}
-            <Input
-              label="Email Address"
-              type="email"
-              icon={Mail}
-              {...form.register('email')}
-              error={form.formState.errors.email?.message}
-              placeholder="Enter your email"
-            />
-
-            {/* Password Field */}
-            <div className="relative">
-              <Input
-                label="Password"
-                type={showPassword ? 'text' : 'password'}
-                icon={Lock}
-                {...form.register('password')}
-                error={form.formState.errors.password?.message}
-                placeholder="Enter your password"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-9 text-gray-400 hover:text-gray-600"
-              >
-                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-              </button>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email Address
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Enter your email"
+                />
+              </div>
             </div>
 
-            {/* Confirm Password Field (Register only) */}
+            {/* Password */}
+            <PasswordField
+              id="password"
+              label="Password"
+              value={password}
+              setValue={setPassword}
+              show={showPassword}
+              setShow={setShowPassword}
+              placeholder="Enter your password"
+            />
+
+            {/* Confirm Password */}
             {!isLogin && (
-              <div className="relative">
-                <Input
-                  label="Confirm Password"
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  icon={Lock}
-                  {...form.register('confirmPassword')}
-                  error={form.formState.errors.confirmPassword?.message}
-                  placeholder="Confirm your password"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-9 text-gray-400 hover:text-gray-600"
-                >
-                  {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
-              </div>
+              <PasswordField
+                id="confirmPassword"
+                label="Confirm Password"
+                value={confirmPassword}
+                setValue={setConfirmPassword}
+                show={showConfirmPassword}
+                setShow={setShowConfirmPassword}
+                placeholder="Confirm your password"
+              />
             )}
 
             {/* Forgot Password (Login only) */}
@@ -140,8 +127,8 @@ export function LoginPage({ onLogin, onNavigate }) {
               </div>
             )}
 
-            {/* Submit Button */}
-            <Button
+            {/* Submit */}
+            <button
               type="submit"
               className="w-full"
               loading={form.formState.isSubmitting}
@@ -173,6 +160,7 @@ export function LoginPage({ onLogin, onNavigate }) {
               ← Back to Home
             </button>
           </div>
+
         </div>
       </div>
     </div>

@@ -1,52 +1,27 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Header } from './components/Header';
-import { HomePage } from './pages/HomePage';
-import { LoginPage } from './pages/LoginPage';
-import { ProfilePage } from './pages/ProfilePage';
-import { RequestsPage } from './pages/RequestsPage';
-import { SwapRequestModal } from './components/SwapRequestModal';
-import { notifyLoginSuccess, notifyLogout, notifySwapRequest } from './utils/toast';
+import { useAuth } from './context/AuthContext';
+import ProtectedRoute from './routes/ProtectedRoute';
 
-function AppWrapper() {
-  return (
-    <Router>
-      <App />
-    </Router>
-  );
-}
+import Header from './components/Header';
+import SwapRequestModal from './components/SwapRequestModal';
+
+import Home from './pages/HomePage';
+import Login from './pages/LoginPage';
+import Signup from './pages/Signup';
+import Profile from './pages/ProfilePage';
+import Requests from './pages/RequestsPage';
+import Browse from './pages/Browse';
 
 function App() {
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
 
-  const [currentUser, setCurrentUser] = useState(null);
   const [showSwapModal, setShowSwapModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
-
-  const handleLogin = (email, password) => {
-    const mockUser = {
-      id: '1',
-      name: 'Alex Johnson',
-      email,
-      profilePhoto: 'https://images.pexels.com/photos/3782179/pexels-photo-3782179.jpeg?auto=compress&cs=tinysrgb&w=150',
-      skillsOffered: ['Web Development', 'UI/UX Design'],
-      skillsWanted: ['Photography', 'Content Writing'],
-      rating: 4.8,
-      location: 'San Francisco, CA',
-    };
-    setCurrentUser(mockUser);
-    notifyLoginSuccess(mockUser.name);
-    navigate('/profile'); // go to profile after login
-  };
-
-  const handleLogout = () => {
-    setCurrentUser(null);
-    notifyLogout();
-    navigate('/'); // go to home after logout
-  };
 
   const handleSwapRequest = (targetUser) => {
     setSelectedUser(targetUser);
@@ -59,65 +34,56 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header
-        currentUser={currentUser}
-        onNavigate={handleNavigate} // 🔷 pass navigate handler
-        onLogout={handleLogout}
-      />
+      <Header currentUser={user} onNavigate={handleNavigate} onLogout={logout} />
 
-      <main className="pt-16">
+      <main className="container mx-auto pt-16 px-4 py-8">
         <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+
           <Route
             path="/"
             element={
-              <HomePage
-                currentUser={currentUser}
-                onNavigate={handleNavigate}
-                onSwapRequest={handleSwapRequest}
-              />
-            }
-          />
-
-          <Route
-            path="/login"
-            element={
-              <LoginPage
-                onLogin={handleLogin}
-                onNavigate={handleNavigate}
-              />
+              <ProtectedRoute>
+                <Home onSwapRequest={handleSwapRequest} />
+              </ProtectedRoute>
             }
           />
 
           <Route
             path="/profile"
             element={
-              currentUser ? (
-                <ProfilePage user={currentUser} />
-              ) : (
-                <Navigate to="/login" />
-              )
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
             }
           />
 
           <Route
             path="/requests"
             element={
-              currentUser ? (
-                <RequestsPage user={currentUser} />
-              ) : (
-                <Navigate to="/login" />
-              )
+              <ProtectedRoute>
+                <Requests />
+              </ProtectedRoute>
             }
           />
 
-          {/* fallback */}
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route
+            path="/browse"
+            element={
+              <ProtectedRoute>
+                <Browse onSwapRequest={handleSwapRequest} />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="*" element={<div className="text-center text-xl font-bold text-red-500">404 - Page Not Found</div>} />
         </Routes>
       </main>
 
-      {showSwapModal && selectedUser && currentUser && (
+      {showSwapModal && selectedUser && user && (
         <SwapRequestModal
-          fromUser={currentUser}
+          fromUser={user}
           toUser={selectedUser}
           onClose={() => setShowSwapModal(false)}
           onSubmit={(data) => {
@@ -143,4 +109,4 @@ function App() {
   );
 }
 
-export default AppWrapper;
+export default App;
