@@ -19,7 +19,7 @@ import {
   AlertTriangle,
 } from 'lucide-react';
 
-export function AdminDashboard({ currentUser, onNavigate }) {
+export default function AdminDashboard({ currentUser, onNavigate }) {
   const [activeTab, setActiveTab] = useState('overview');
   const [users, setUsers] = useState([]);
   const [swapRequests, setSwapRequests] = useState([]);
