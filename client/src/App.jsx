@@ -12,7 +12,17 @@ function App() {
         </nav>
         <main className="container mx-auto px-4 py-8">
           <Routes>
-            <Route path="/" element={<div>Home Page</div>} />
+            <Route path="/" element={
+              <div>
+                <h1 className="text-4xl font-bold text-blue-600 mb-4">Home Page</h1>
+                <div className="bg-red-500 text-white p-4 rounded-lg mb-4">
+                  Tailwind Test: This should have red background
+                </div>
+                <button className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg transition-colors">
+                  Test Button
+                </button>
+              </div>
+            } />
             <Route path="/login" element={<div>Login Page</div>} />
             <Route path="/profile" element={<div>Profile Page (Protected)</div>} />
             <Route path="/requests" element={<div>Requests Page (Protected)</div>} />
