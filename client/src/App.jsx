@@ -1,49 +1,125 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-function App() {
+import { Header } from './components/Header';
+import { HomePage } from './pages/HomePage';
+import { LoginPage } from './pages/LoginPage';
+import { ProfilePage } from './pages/ProfilePage';
+import { RequestsPage } from './pages/RequestsPage';
+import { SwapRequestModal } from './components/SwapRequestModal';
+
+function AppWrapper() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
-        {/* Navbar placeholder */}
-        <nav className="bg-white shadow px-4 py-3 mb-8">
-          <span className="font-bold text-xl text-primary-600">SkillSwap</span>
-        </nav>
-        <main className="container mx-auto px-4 py-8">
-          <Routes>
-            <Route path="/" element={
-              <div>
-                <h1 className="text-4xl font-bold text-blue-600 mb-4">Home Page</h1>
-                <div className="bg-red-500 text-white p-4 rounded-lg mb-4">
-                  Tailwind Test: This should have red background
-                </div>
-                <button className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg transition-colors">
-                  Test Button
-                </button>
-              </div>
-            } />
-            <Route path="/login" element={<div>Login Page</div>} />
-            <Route path="/profile" element={<div>Profile Page (Protected)</div>} />
-            <Route path="/requests" element={<div>Requests Page (Protected)</div>} />
-            <Route path="*" element={<div>404 - Not Found</div>} />
-          </Routes>
-        </main>
-        <ToastContainer
-          position="top-right"
-          autoClose={4000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </div>
+      <App />
     </Router>
   );
 }
 
-export default App;
+function App() {
+  const navigate = useNavigate();
+
+  const [currentUser, setCurrentUser] = useState(null);
+  const [showSwapModal, setShowSwapModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+
+  const handleLogin = (email, password) => {
+    const mockUser = {
+      id: '1',
+      name: 'Alex Johnson',
+      email,
+      profilePhoto: 'https://images.pexels.com/photos/3782179/pexels-photo-3782179.jpeg?auto=compress&cs=tinysrgb&w=150',
+      skillsOffered: ['Web Development', 'UI/UX Design'],
+      skillsWanted: ['Photography', 'Content Writing'],
+      rating: 4.8,
+      location: 'San Francisco, CA',
+    };
+    setCurrentUser(mockUser);
+    navigate('/profile'); // go to profile after login
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    navigate('/'); // go to home after logout
+  };
+
+  const handleSwapRequest = (targetUser) => {
+    setSelectedUser(targetUser);
+    setShowSwapModal(true);
+  };
+
+  const handleNavigate = (page) => {
+    navigate(`/${page}`);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header
+        currentUser={currentUser}
+        onNavigate={handleNavigate} // 🔷 pass navigate handler
+        onLogout={handleLogout}
+      />
+
+      <main className="pt-16">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                currentUser={currentUser}
+                onSwapRequest={handleSwapRequest}
+              />
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <LoginPage
+                onLogin={handleLogin}
+              />
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
+              currentUser ? (
+                <ProfilePage user={currentUser} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+
+          <Route
+            path="/requests"
+            element={
+              currentUser ? (
+                <RequestsPage user={currentUser} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+
+          {/* fallback */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </main>
+
+      {showSwapModal && selectedUser && currentUser && (
+        <SwapRequestModal
+          fromUser={currentUser}
+          toUser={selectedUser}
+          onClose={() => setShowSwapModal(false)}
+          onSubmit={() => {
+            setShowSwapModal(false);
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+export default AppWrapper;
