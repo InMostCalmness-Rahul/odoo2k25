@@ -17,7 +17,7 @@ export function RequestsPage({ user, onNavigate }) {
         id: '2',
         name: 'Sarah Chen',
         email: 'sarah@example.com',
-        profilePhoto: 'https://images.pexels.com/photos/3483830/pexels-photo-3483830.jpeg?auto=compress&cs=tinysrgb&w=150',
+        profilePhoto: 'https://images.pexels.com/photos/3783830/pexels-photo-3783830.jpeg?auto=compress&cs=tinysrgb&w=150',
         skillsOffered: ['Photography', 'Photo Editing'],
         skillsWanted: ['Web Development', 'SEO'],
         rating: 4.9,
