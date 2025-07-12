@@ -185,3 +185,9 @@
 {"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:14:58.065Z"}
 {"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:14:58.067Z"}
 {"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T10:15:19.472Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:15:30.085Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:15:30.094Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:15:30.097Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:15:30.098Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:15:37.801Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket Wcp1kLpwjMB6wF0PAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:15:37.969Z"}
