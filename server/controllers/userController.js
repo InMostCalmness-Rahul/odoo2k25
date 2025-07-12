@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const { validationResult } = require('express-validator');
 const logger = require('../utils/logger');
+const { deleteImage, extractPublicId } = require('../config/cloudinary');
 
 // Get current user profile
 const getCurrentUser = async (req, res) => {
@@ -268,19 +269,99 @@ const addFeedback = async (req, res) => {
 
 // Upload profile photo
 const uploadProfilePhoto = async (req, res) => {
-  res.status(501).json({
-    success: false,
-    error: 'Photo upload feature temporarily disabled'
-  });
+  try {
+    // Check if file was uploaded
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        error: 'No image file provided'
+      });
+    }
+
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        error: 'User not found'
+      });
+    }
+
+    // Delete old profile photo if it exists
+    if (user.profilePhoto) {
+      const oldPublicId = extractPublicId(user.profilePhoto);
+      if (oldPublicId) {
+        try {
+          await deleteImage(oldPublicId);
+          logger.info(`Old profile photo deleted for user: ${user.email}`);
+        } catch (error) {
+          logger.warn(`Failed to delete old profile photo: ${error.message}`);
+          // Continue with upload even if old image deletion fails
+        }
+      }
+    }
+
+    // Update user with new profile photo URL
+    user.profilePhoto = req.file.path;
+    await user.save();
+
+    logger.info(`Profile photo uploaded for user: ${user.email}`);
+
+    res.status(200).json({
+      success: true,
+      message: 'Profile photo uploaded successfully',
+      profilePhoto: req.file.path,
+      user: user.toSafeObject()
+    });
+
+  } catch (error) {
+    logger.error('Upload profile photo error:', error);
+    
+    // If there was an error after upload, try to delete the uploaded image
+    if (req.file && req.file.path) {
+      const publicId = extractPublicId(req.file.path);
+      if (publicId) {
+        try {
+          await deleteImage(publicId);
+        } catch (deleteError) {
+          logger.warn(`Failed to cleanup uploaded image: ${deleteError.message}`);
+        }
+      }
+    }
+
+    res.status(500).json({
+      success: false,
+      error: 'Internal server error during photo upload'
+    });
+  }
 };
 
 // Delete user account (soft delete)
 const deleteAccount = async (req, res) => {
   try {
     const userId = req.user._id;
+    const user = req.user;
+
+    // Delete profile photo if it exists
+    if (user.profilePhoto) {
+      const publicId = extractPublicId(user.profilePhoto);
+      if (publicId) {
+        try {
+          await deleteImage(publicId);
+          logger.info(`Profile photo deleted for user account deletion: ${user.email}`);
+        } catch (error) {
+          logger.warn(`Failed to delete profile photo during account deletion: ${error.message}`);
+          // Continue with account deletion even if photo deletion fails
+        }
+      }
+    }
 
     // Soft delete by setting isActive to false
-    await User.findByIdAndUpdate(userId, { isActive: false });
+    await User.findByIdAndUpdate(userId, { 
+      isActive: false,
+      profilePhoto: null // Clear the photo URL
+    });
 
     logger.info(`User account deleted: ${req.user.email}`);
 

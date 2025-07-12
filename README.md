@@ -92,6 +92,7 @@ odoo2k25/
 - **MongoDB + Mongoose** (Database)
 - **bcryptjs** (Password hashing)
 - **jsonwebtoken** (Authentication)
+- **Cloudinary + Multer** (Profile photo upload & storage)
 - **Helmet, CORS, Rate Limiting** (Security)
 - **Winston + Morgan** (Logging)
 
@@ -99,7 +100,7 @@ odoo2k25/
 
 ### User Features
 - ✅ User authentication (JWT + refresh tokens)
-- ✅ Profile creation & management
+- ✅ Profile creation & management with photo uploads (Cloudinary integration)
 - ✅ Browse & search users by skills with advanced filtering
 - ✅ Send & manage swap requests with intuitive modal interface
 - ✅ Rating & feedback system
@@ -125,9 +126,27 @@ odoo2k25/
 - `POST /api/auth/refresh` - Refresh access token
 
 ### Users
-- `GET /api/user/me` - Get current user profile
-- `PUT /api/user/update` - Update user profile
+- `GET /api/users/me` - Get current user profile
+- `PUT /api/users/me` - Update user profile
+- `POST /api/users/upload-photo` - Upload profile photo (see below)
+- `DELETE /api/users/me` - Delete user account
 - `GET /api/users` - Search public users
+- `GET /api/users/:userId` - Get specific user profile
+- `POST /api/users/:userId/feedback` - Add user feedback
+
+#### 📸 Profile Photo Upload (Cloudinary)
+
+- **Endpoint:** `POST /api/users/upload-photo`
+- **Auth:** Bearer JWT required
+- **Request:** `multipart/form-data` with `profilePhoto` field (JPG, PNG, GIF, WEBP, max 5MB)
+- **Response:**
+  - On success: `{ success: true, message, profilePhoto: <url>, user: { ... } }`
+  - On error: `{ success: false, error: <message> }`
+- **Features:**
+  - Auto-resize to 500x500px, face detection crop
+  - Old photo auto-deleted on new upload
+  - CDN delivery, auto-optimization
+  - See API docs for full details and examples
 
 ### Swap Requests
 - `POST /api/swap` - Create swap request
@@ -182,7 +201,7 @@ VITE_API_URL=http://localhost:5000/api
 - [ ] Authentication controllers implementation
 - [ ] User management API integration
 - [ ] Swap request CRUD operations
-- [ ] File upload (Cloudinary) integration
+- [x] File upload (Cloudinary) integration ✅ **COMPLETED** (see above)
 - [ ] Real-time notifications backend
 
 ### 📅 Additional Features
