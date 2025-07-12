@@ -3,21 +3,27 @@ import { motion } from 'framer-motion';
 import { cn } from '../../utils/cn';
 
 const Card = ({ children, className, hover = true, onClick, ...props }) => {
-  const Component = onClick ? motion.div : 'div';
+  const isMotionDiv = !!onClick;
+  const Component = isMotionDiv ? motion.div : 'div';
+  
+  const baseProps = {
+    className: cn(
+      'bg-white rounded-xl border border-gray-200 shadow-sm',
+      hover && 'hover:shadow-md transition-shadow duration-200',
+      onClick && 'cursor-pointer',
+      className
+    ),
+    onClick,
+    ...props
+  };
+
+  const motionProps = isMotionDiv ? {
+    whileHover: hover ? { y: -2 } : {},
+    transition: { duration: 0.2 }
+  } : {};
   
   return (
-    <Component
-      className={cn(
-        'bg-white rounded-xl border border-gray-200 shadow-sm',
-        hover && 'hover:shadow-md transition-shadow duration-200',
-        onClick && 'cursor-pointer',
-        className
-      )}
-      onClick={onClick}
-      whileHover={onClick && hover ? { y: -2 } : {}}
-      transition={{ duration: 0.2 }}
-      {...props}
-    >
+    <Component {...baseProps} {...motionProps}>
       {children}
     </Component>
   );

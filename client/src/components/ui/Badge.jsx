@@ -46,4 +46,4 @@ const Badge = ({ children, className, variant = 'default', size = 'md', ...props
 export default Badge;
 
 // Also export as named export for backward compatibility
-export { Badge };;
+export { Badge };

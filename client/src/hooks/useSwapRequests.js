@@ -13,7 +13,7 @@ export const useSwapRequests = () => {
       setLoading(true);
       setError(null);
       const response = await getSwaps();
-      setRequests(response.swaps || []);
+      setRequests(response.requests || []);
     } catch (err) {
       console.error('Failed to fetch swap requests:', err);
       setError(err.response?.data?.error || 'Failed to fetch swap requests');

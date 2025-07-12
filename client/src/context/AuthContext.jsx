@@ -99,6 +99,10 @@ export const AuthProvider = ({ children }) => {
 
   const refreshAuth = loadUser; // For other contexts/hooks to call if needed
 
+  const updateUserProfile = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -111,6 +115,7 @@ export const AuthProvider = ({ children }) => {
         signup,
         logout,
         refreshAuth, // optional: exposed for reuse
+        updateUserProfile,
       }}
     >
       {children}

@@ -15,6 +15,7 @@ import Login from './pages/LoginPage';
 import Signup from './pages/Signup';
 import Requests from './pages/RequestsPage';
 import Browse from './pages/Browse';
+import ProfilePage from './pages/ProfilePage';
 import UserProfileView from './pages/UserProfileView';
 import AdminDashboard from './pages/AdminDashboard';
 
@@ -67,7 +68,7 @@ function App() {
             path="/profile"
             element={
               <ProtectedRoute>
-                <UserProfileView />
+                <ProfilePage />
               </ProtectedRoute>
             }
           />

@@ -14,8 +14,8 @@ export const getSwaps = async () => {
 };
 
 // Accept or reject a swap
-export const updateSwapStatus = async (id, status) => {
-  const res = await axios.patch(`/swap/${id}`, { status });
+export const updateSwapStatus = async (id, payload) => {
+  const res = await axios.patch(`/swap/${id}`, payload);
   return res.data;
 };
 

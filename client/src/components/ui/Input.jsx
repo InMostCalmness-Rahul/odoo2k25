@@ -33,6 +33,9 @@ export function Input({
   );
 }
 
+// Default export for backward compatibility
+export default Input;
+
 export function Select({
   className,
   error,

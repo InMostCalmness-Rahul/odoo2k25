@@ -191,3 +191,116 @@
 {"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:15:30.098Z"}
 {"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:15:37.801Z"}
 {"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket Wcp1kLpwjMB6wF0PAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:15:37.969Z"}
+{"level":"error","message":"Logout error: Cannot read properties of undefined (reading 'refreshToken')","service":"skillswap-api","stack":"TypeError: Cannot read properties of undefined (reading 'refreshToken')\n    at logout (C:\\Owais\\odoo2k25\\server\\controllers\\authController.js:163:38)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:157:13)\n    at Route.dispatch (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:117:3)\n    at handle (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:435:11)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:295:15\n    at processParams (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:582:12)\n    at next (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:291:5)\n    at router.handle (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:186:3)","timestamp":"2025-07-12T10:17:16.731Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:17:27.999Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket 2wFQFM2s5EsJz7j5AAAD","service":"skillswap-api","timestamp":"2025-07-12T10:17:29.776Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:17:40.099Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:17:40.103Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:17:40.105Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:17:40.105Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket u0Yz7_jcSPbK5L1KAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:17:41.001Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:19:50.122Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:19:50.130Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:19:50.132Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:19:50.132Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket mV9J1owPt4-PmFcbAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:19:54.983Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:19:58.539Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T10:22:35.757Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:22:43.494Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:22:43.498Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:22:43.500Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:22:43.500Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket h16IjnzfB4ARfhW8AAAB","service":"skillswap-api","timestamp":"2025-07-12T10:22:47.710Z"}
+{"level":"info","message":"User profile updated: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:23:12.406Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:24:01.047Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket xvPCxkl2Rv5Vq_L8AAAD","service":"skillswap-api","timestamp":"2025-07-12T10:24:03.640Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:24:07.972Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket rAht3hkT37ZZL0W5AAAF","service":"skillswap-api","timestamp":"2025-07-12T10:24:09.898Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:24:26.015Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket WaJKSdDIFtz9ax5BAAAH","service":"skillswap-api","timestamp":"2025-07-12T10:24:27.531Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:24:30.032Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket mstusGf02HDig0-9AAAJ","service":"skillswap-api","timestamp":"2025-07-12T10:24:30.613Z"}
+{"level":"info","message":"User profile updated: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:24:38.236Z"}
+{"level":"info","message":"Profile photo uploaded for user: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:24:48.487Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:24:48.518Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket AIj-8cXKL_1gygmoAAAL","service":"skillswap-api","timestamp":"2025-07-12T10:24:48.568Z"}
+{"level":"info","message":"User profile updated: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:24:50.526Z"}
+{"level":"info","message":"Swap request created: 68722fd27a90c727d0909616 -> 6871e446322e8bd64dd7e7d0","service":"skillswap-api","timestamp":"2025-07-12T10:25:19.618Z"}
+{"level":"info","message":"User 6871e446322e8bd64dd7e7d0 not connected, notification queued","service":"skillswap-api","timestamp":"2025-07-12T10:25:19.621Z"}
+{"level":"info","message":"User registered successfully: oaak92786@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:27:15.186Z"}
+{"level":"info","message":"User 68723882c285277b28f9c4df connected via socket t_8lUgIerQt1ZbmQAAAN","service":"skillswap-api","timestamp":"2025-07-12T10:27:15.300Z"}
+{"level":"info","message":"User 68723882c285277b28f9c4df disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:28:12.256Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:28:22.328Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T10:28:49.052Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:29:36.108Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:29:36.113Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:29:36.115Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:29:36.115Z"}
+{"level":"info","message":"User 68723882c285277b28f9c4df connected via socket e-t0ax_bVerjddhjAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:29:43.210Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:29:47.723Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket p-A3D8ZDPnMIJyWmAAAD","service":"skillswap-api","timestamp":"2025-07-12T10:29:47.888Z"}
+{"level":"error","message":"Logout error: Cannot read properties of undefined (reading 'refreshToken')","service":"skillswap-api","stack":"TypeError: Cannot read properties of undefined (reading 'refreshToken')\n    at logout (C:\\Owais\\odoo2k25\\server\\controllers\\authController.js:163:38)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:157:13)\n    at Route.dispatch (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:117:3)\n    at handle (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:435:11)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:295:15\n    at processParams (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:582:12)\n    at next (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:291:5)\n    at router.handle (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:186:3)","timestamp":"2025-07-12T10:29:51.246Z"}
+{"level":"info","message":"User 68723882c285277b28f9c4df disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:31:27.273Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:31:55.675Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:32:11.679Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:32:11.689Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:32:11.691Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:32:11.691Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket mNcE-oIcvArJoalOAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:32:13.002Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:32:17.468Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket RE4HTYGmXMD2zt25AAAD","service":"skillswap-api","timestamp":"2025-07-12T10:32:18.020Z"}
+{"level":"error","message":"Logout error: Cannot read properties of undefined (reading 'refreshToken')","service":"skillswap-api","stack":"TypeError: Cannot read properties of undefined (reading 'refreshToken')\n    at logout (C:\\Owais\\odoo2k25\\server\\controllers\\authController.js:163:38)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:157:13)\n    at Route.dispatch (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:117:3)\n    at handle (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:435:11)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:295:15\n    at processParams (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:582:12)\n    at next (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:291:5)\n    at router.handle (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:186:3)","timestamp":"2025-07-12T10:32:19.172Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:33:02.446Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:33:02.452Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:33:02.454Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:33:02.455Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket ze-vbJiUZd9FiWUWAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:33:03.000Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:34:11.506Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:34:11.511Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:34:11.513Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:34:11.514Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket Xv6KAxGy1ueIKn6bAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:34:15.986Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:34:27.205Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket 8wNRMLlzl9K-t5C7AAAD","service":"skillswap-api","timestamp":"2025-07-12T10:34:28.388Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket Rsm_5RMH542WwZKrAAAF","service":"skillswap-api","timestamp":"2025-07-12T10:34:28.675Z"}
+{"level":"info","message":"User logged out successfully","service":"skillswap-api","timestamp":"2025-07-12T10:34:30.052Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:34:30.068Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:34:30.069Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:34:33.193Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket tWJNBQnHRkSfiGkCAAAH","service":"skillswap-api","timestamp":"2025-07-12T10:34:33.357Z"}
+{"level":"info","message":"Swap request created: 68722fd27a90c727d0909616 -> 6871e446322e8bd64dd7e7d0","service":"skillswap-api","timestamp":"2025-07-12T10:34:59.455Z"}
+{"level":"info","message":"User 6871e446322e8bd64dd7e7d0 not connected, notification queued","service":"skillswap-api","timestamp":"2025-07-12T10:34:59.457Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:35:04.614Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket bAGKXIIOwLUr7BRdAAAJ","service":"skillswap-api","timestamp":"2025-07-12T10:35:05.218Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket 5bBXbvr7y_6raJe4AAAL","service":"skillswap-api","timestamp":"2025-07-12T10:35:05.421Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:35:06.461Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:35:19.480Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket 7_4hFK_t9X3CjnPxAAAN","service":"skillswap-api","timestamp":"2025-07-12T10:35:20.061Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket di53EOOFhYHYcECjAAAR","service":"skillswap-api","timestamp":"2025-07-12T10:35:59.275Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket gwuhZioTNNGfASzlAAAQ","service":"skillswap-api","timestamp":"2025-07-12T10:35:59.276Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:37:34.857Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:37:34.859Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:37:34.860Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket diDRHfguGd3m4mSCAAAT","service":"skillswap-api","timestamp":"2025-07-12T10:37:35.419Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket zpSXg5s6idGjsghlAAAV","service":"skillswap-api","timestamp":"2025-07-12T10:37:35.504Z"}
+{"level":"info","message":"Swap request 68723a537e635f9e36c191d8 status updated to cancelled","service":"skillswap-api","timestamp":"2025-07-12T10:38:41.411Z"}
+{"data":{"otherUser":{"_id":"68722fd27a90c727d0909616","email":"oaak78692@gmail.com","feedbackCount":0,"id":"68722fd27a90c727d0909616","name":"Owais Ahmed Khan","profilePhoto":"https://res.cloudinary.com/doe422qtw/image/upload/v1752315900/skillswap/profiles/profile_68722fd27a90c727d0909616_1752315885413.jpg"},"requestId":"68723a537e635f9e36c191d8","status":"cancelled"},"level":"info","message":"Notification sent to user 68722fd27a90c727d0909616: Your swap request has been cancelled","service":"skillswap-api","timestamp":"2025-07-12T10:38:41.412Z","title":"Swap Request Update","type":"swap_update"}
+{"level":"info","message":"User 6871e446322e8bd64dd7e7d0 not connected, notification queued","service":"skillswap-api","timestamp":"2025-07-12T10:38:41.414Z"}
+{"level":"info","message":"User logged out successfully","service":"skillswap-api","timestamp":"2025-07-12T10:39:22.695Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:39:22.717Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:39:22.719Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:41:37.999Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket aJl0umfmEZGC7WYrAAAX","service":"skillswap-api","timestamp":"2025-07-12T10:41:38.173Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:41:40.440Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T10:41:46.752Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:41:56.946Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:41:56.952Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:41:56.956Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:41:56.956Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 connected via socket zeXS4CnBlbx5Wr4EAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:42:00.274Z"}
+{"level":"info","message":"User logged out successfully","service":"skillswap-api","timestamp":"2025-07-12T10:42:08.100Z"}
+{"level":"info","message":"User 68722fd27a90c727d0909616 disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:42:08.115Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:46:44.432Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:46:44.437Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:46:44.439Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:46:44.440Z"}

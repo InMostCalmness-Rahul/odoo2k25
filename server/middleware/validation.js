@@ -95,6 +95,12 @@ const validateProfileUpdate = [
     .isLength({ max: 200 })
     .withMessage('Location cannot exceed 200 characters'),
 
+  body('bio')
+    .optional()
+    .trim()
+    .isLength({ max: 500 })
+    .withMessage('Bio cannot exceed 500 characters'),
+
   body('skillsOffered')
     .optional()
     .isArray()

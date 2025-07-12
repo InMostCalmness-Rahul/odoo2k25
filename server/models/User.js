@@ -27,6 +27,11 @@ const userSchema = new mongoose.Schema({
     trim: true,
     maxlength: [200, 'Location cannot exceed 200 characters']
   },
+  bio: {
+    type: String,
+    trim: true,
+    maxlength: [500, 'Bio cannot exceed 500 characters']
+  },
   skillsOffered: [{
     type: String,
     trim: true,
