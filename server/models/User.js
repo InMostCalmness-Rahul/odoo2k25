@@ -102,7 +102,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Indexes for performance
-userSchema.index({ email: 1 });
+// Note: email index is already created by unique: true property
 userSchema.index({ skillsOffered: 1 });
 userSchema.index({ skillsWanted: 1 });
 userSchema.index({ location: 1 });

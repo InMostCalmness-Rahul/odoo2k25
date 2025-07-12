@@ -17,5 +17,3 @@ router.get('/:userId', userController.getUserById);
 router.post('/:userId/feedback', auth, validateFeedback, userController.addFeedback);
 
 module.exports = router;
-
-module.exports = router;

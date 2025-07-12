@@ -21,18 +21,18 @@ Lead the overall technical architecture and backend development of the Skill Swa
 - **Support:** Assist Dev B with API integration and troubleshooting backend-related issues.
 
 # 📝 TODO
-[ ] Scaffold server/ and client/ folders with clear structure
-[ ] Set up Express app, connect to MongoDB with Mongoose
-[ ] Design and document User and SwapRequest schemas (relationships, data types, validation)
-[ ] Implement authentication (signup, login, JWT, refresh, logout)
-[ ] Set up middleware (auth, role-based access, error handling)
-[ ] Build modular user, swap, and admin routes/controllers
-[ ] Apply security best practices (Helmet, CORS, rate limiting, input sanitization)
-[ ] Seed initial users and test data
-[ ] Write and maintain API documentation and schema diagrams
-[ ] Validate and sanitize all backend inputs (use express-validator or custom logic)
-[ ] Ensure no hardcoded values (use .env/config files for secrets and constants)
-[ ] Add comprehensive error handling and fallback messages for all endpoints
-[ ] Run and fix linter (ESLint) issues; enforce code style
-[ ] Review backend PRs for code quality, security, and performance
-[ ] Profile and optimize backend for performance (queries, memory, network)
+[x] Scaffold server/ and client/ folders with clear structure
+[x] Set up Express app, connect to MongoDB with Mongoose
+[x] Design and document User and SwapRequest schemas (relationships, data types, validation)
+[x] Implement authentication (signup, login, JWT, refresh, logout)
+[x] Set up middleware (auth, role-based access, error handling)
+[x] Build modular user, swap, and admin routes/controllers
+[x] Apply security best practices (Helmet, CORS, rate limiting, input sanitization)
+[x] Seed initial users and test data
+[x] Write and maintain API documentation and schema diagrams
+[x] Validate and sanitize all backend inputs (use express-validator or custom logic)
+[x] Ensure no hardcoded values (use .env/config files for secrets and constants)
+[x] Add comprehensive error handling and fallback messages for all endpoints
+[x] Run and fix linter (ESLint) issues; enforce code style
+[x] Review backend PRs for code quality, security, and performance
+[x] Profile and optimize backend for performance (queries, memory, network)

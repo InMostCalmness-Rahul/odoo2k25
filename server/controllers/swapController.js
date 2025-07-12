@@ -121,7 +121,7 @@ const getUserSwapRequests = async (req, res) => {
     const { type = 'all', status, page = 1, limit = 20 } = req.query;
 
     // Build filter
-    let filter = {};
+    const filter = {};
     
     if (type === 'sent') {
       filter.fromUser = userId;

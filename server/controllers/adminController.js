@@ -1,8 +1,6 @@
 const User = require('../models/User');
 const SwapRequest = require('../models/SwapRequest');
 const logger = require('../utils/logger');
-const fs = require('fs').promises;
-const path = require('path');
 
 // Get all users (admin only)
 const getAllUsers = async (req, res) => {
