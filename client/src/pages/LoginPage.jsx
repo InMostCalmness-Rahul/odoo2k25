@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
-import { useValidatedForm } from '../hooks/useForm';
-import { loginSchema, signupSchema } from '../utils/validation';
-import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
-import { Alert } from '../components/ui/Alert';
-import { showToast } from '../utils/toast';
 
 export default function LoginPage({ onLogin, onNavigate }) {
   const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) return;
+
     if (!isLogin && password !== confirmPassword) {
       alert('Passwords do not match');
       return;
     }
+
     onLogin(email, password);
   };
 
@@ -32,11 +31,11 @@ export default function LoginPage({ onLogin, onNavigate }) {
         <input
           id={id}
           type={show ? 'text' : 'password'}
-          required
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder={placeholder}
           className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          required
         />
         <button
           type="button"
@@ -71,7 +70,6 @@ export default function LoginPage({ onLogin, onNavigate }) {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
-            
             {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -82,11 +80,11 @@ export default function LoginPage({ onLogin, onNavigate }) {
                 <input
                   id="email"
                   type="email"
-                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Enter your email"
+                  required
                 />
               </div>
             </div>
@@ -102,7 +100,7 @@ export default function LoginPage({ onLogin, onNavigate }) {
               placeholder="Enter your password"
             />
 
-            {/* Confirm Password */}
+            {/* Confirm Password (Signup only) */}
             {!isLogin && (
               <PasswordField
                 id="confirmPassword"
@@ -130,20 +128,18 @@ export default function LoginPage({ onLogin, onNavigate }) {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full"
-              loading={form.formState.isSubmitting}
-              disabled={!form.formState.isValid}
+              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
             >
               {isLogin ? 'Sign In' : 'Create Account'}
-            </Button>
+            </button>
           </form>
 
-          {/* Toggle Form */}
+          {/* Toggle Login/Signup */}
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               {isLogin ? "Don't have an account?" : "Already have an account?"}
               <button
-                onClick={toggleForm}
+                onClick={() => setIsLogin(!isLogin)}
                 className="ml-2 text-blue-600 hover:text-blue-800 font-medium hover:underline"
               >
                 {isLogin ? 'Sign up' : 'Sign in'}
@@ -160,7 +156,6 @@ export default function LoginPage({ onLogin, onNavigate }) {
               ← Back to Home
             </button>
           </div>
-
         </div>
       </div>
     </div>

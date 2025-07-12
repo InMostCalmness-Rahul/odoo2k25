@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 
 export default function SwapRequestModal({ fromUser, toUser, onClose, onSubmit }) {
   const [message, setMessage] = useState('');
@@ -26,6 +27,7 @@ export default function SwapRequestModal({ fromUser, toUser, onClose, onSubmit }
   };
 
   return (
+    <AnimatePresence>
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <div className="bg-white rounded-xl w-full max-w-lg shadow-xl p-6 relative">
         {/* Close button */}
@@ -84,6 +86,7 @@ export default function SwapRequestModal({ fromUser, toUser, onClose, onSubmit }
             Send Request
           </button>
         </form>
+      </div>
       </div>
     </AnimatePresence>
   );

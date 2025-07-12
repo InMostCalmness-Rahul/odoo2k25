@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 // ✅ Validation schema
 const signupSchema = z.object({
   name: z.string().min(2, "Name is required"),
-  email: z.string().email("Invalid email"),
+  email: z.email("Invalid email"),
   password: z.string().min(6, "Password must be at least 6 characters"),
   confirmPassword: z.string().min(6, "Confirm your password"),
 }).refine((data) => data.password === data.confirmPassword, {
