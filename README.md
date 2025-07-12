@@ -5,12 +5,12 @@ A MERN-based **Skill Swap Platform** where users can list their skills, request 
 
 ## 👥 Development Team
 
-| Name         | Role                        | Email / Contact         |
-|--------------|-----------------------------|------------------------|
-| Owais        | Fullstack Architect         |   oaak78692@gmail.com  |
-| Sujal        | Frontend Builder            |                        |
-| Rahul        | Data Integrator             |                        |
-| Sonia        | QA + UI Polish + Docs       |                        |
+| Name         | Role                        | Email / Contact                |
+|--------------|-----------------------------|------------------------        |
+| Owais        | Fullstack Architect         |  oaak78692@gmail.com           |
+| Sujal        | Frontend Builder            |  sujalagarwal230104@gmail.com  |
+| Rahul        | Data Integrator             |  singhrahul161104@gmail.com    |
+| Sonia        | QA + UI Polish + Docs       |  rawatsonia2003@gmail.com      |
 
 
 ## 🚀 Quick Start
