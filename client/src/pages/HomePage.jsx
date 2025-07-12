@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { ChevronLeft, ChevronRight, Search, Filter, Users } from "lucide-react";
 import { usePagination, useDebounce } from '../hooks/useForm';
 import { Button } from '../components/ui/Button';
-import { Card } from '../components/ui/Card';
+import Card from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Input, Select } from '../components/ui/Input';
 import { EmptyState } from '../components/ui/Alert';
