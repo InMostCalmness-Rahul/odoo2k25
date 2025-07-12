@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../../utils/cn';
 
-export function Card({ children, className, hover = true, onClick, ...props }) {
+const Card = ({ children, className, hover = true, onClick, ...props }) => {
   const Component = onClick ? motion.div : 'div';
   
   return (
@@ -21,7 +21,7 @@ export function Card({ children, className, hover = true, onClick, ...props }) {
       {children}
     </Component>
   );
-}
+};
 
 export function CardHeader({ children, className, ...props }) {
   return (
@@ -42,6 +42,9 @@ export function CardContent({ children, className, ...props }) {
   );
 }
 
+// Create CardBody as alias for CardContent for backward compatibility
+export const CardBody = CardContent;
+
 export function CardFooter({ children, className, ...props }) {
   return (
     <div
@@ -52,3 +55,5 @@ export function CardFooter({ children, className, ...props }) {
     </div>
   );
 }
+
+export default Card;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { X } from 'lucide-react';
-import { Button } from './Button';
+import Button from './Button';
 
-export function Modal({ 
+const Modal = ({ 
   isOpen, 
   onClose, 
   title, 
@@ -10,7 +10,7 @@ export function Modal({
   showCloseButton = true,
   size = 'md',
   ...props 
-}) {
+}) => {
   const sizeClasses = {
     sm: 'max-w-md',
     md: 'max-w-2xl',
@@ -47,8 +47,9 @@ export function Modal({
       </div>
     </div>
   );
-}
+};
 
+export default Modal;
 export function ConfirmModal({
   isOpen,
   onClose,

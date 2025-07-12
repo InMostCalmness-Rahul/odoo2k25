@@ -17,7 +17,7 @@ const buttonSizes = {
   lg: 'px-6 py-3 text-base',
 };
 
-export function Button({
+const Button = ({
   children,
   className,
   variant = 'primary',
@@ -27,7 +27,7 @@ export function Button({
   icon: Icon,
   iconPosition = 'left',
   ...props
-}) {
+}) => {
   return (
     <motion.button
       whileTap={{ scale: disabled || loading ? 1 : 0.98 }}
@@ -56,4 +56,9 @@ export function Button({
       )}
     </motion.button>
   );
-}
+};
+
+export default Button;
+
+// Also export as named export for backward compatibility
+export { Button };

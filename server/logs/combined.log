@@ -84,3 +84,7 @@
 {"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T07:40:17.947Z"}
 {"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T07:56:24.485Z"}
 {"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T07:56:24.489Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T08:09:26.418Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T08:09:26.429Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T08:09:26.434Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T08:09:26.434Z"}
