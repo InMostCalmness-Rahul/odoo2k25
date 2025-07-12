@@ -48,6 +48,13 @@ npm run dev
 - Backend API: http://localhost:5000/api
 - API Health Check: http://localhost:5000/api/health
 
+## 📚 Documentation
+
+- **[Development Setup Guide](./DEVELOPMENT_SETUP.md)** - Complete development environment setup
+- **[User Guide](./USER_GUIDE.md)** - How to use the platform as an end user
+- **[API Documentation](./server/API_DOCUMENTATION.md)** - Complete API reference
+- **[Database Schema](./server/SCHEMA_DOCUMENTATION.md)** - Database design and relationships
+
 ## 📁 Project Structure
 
 ```
@@ -81,17 +88,20 @@ odoo2k25/
 - **React** (Functional components + Hooks)
 - **React Router DOM** (Navigation)
 - **Axios** (API calls)
+- **Socket.io Client** (Real-time features)
 - **TailwindCSS** (Styling)
 - **React Hook Form + Zod** (Form validation)
 - **React Toastify** (Notifications)
 - **Framer Motion** (Animations)
 - **Lucide React** (Icons)
+- **Date-fns** (Date formatting)
 
 ### Backend
 - **Express.js** (API framework)
 - **MongoDB + Mongoose** (Database)
 - **bcryptjs** (Password hashing)
 - **jsonwebtoken** (Authentication)
+- **Socket.io** (Real-time communications)
 - **Cloudinary + Multer** (Profile photo upload & storage)
 - **Helmet, CORS, Rate Limiting** (Security)
 - **Winston + Morgan** (Logging)
@@ -103,19 +113,28 @@ odoo2k25/
 - ✅ Profile creation & management with photo uploads (Cloudinary integration)
 - ✅ Browse & search users by skills with advanced filtering
 - ✅ Send & manage swap requests with intuitive modal interface
-- ✅ Rating & feedback system
+- ✅ **Rating & feedback system with real-time notifications**
 - ✅ Profile privacy controls
 - ✅ Responsive design with mobile support
+- ✅ **Real-time notifications via Socket.io**
 - ✅ Toast notifications for user feedback
 - ✅ Loading states and error handling
 - ✅ Advanced pagination and search
 - ✅ Smooth animations and micro-interactions
+- ✅ **Comprehensive user profile views with reviews**
 
 ### Admin Features
 - ✅ User management & moderation
 - ✅ Content moderation
 - ✅ Activity reports
 - ✅ System announcements
+
+### Real-time Features
+- ✅ **Live notifications for new swap requests**
+- ✅ **Real-time status updates for accepted/rejected requests**
+- ✅ **Instant feedback notifications**
+- ✅ **Online/offline user status indicators**
+- ✅ **Typing indicators (ready for chat feature)**
 
 ## 🧩 API Endpoints
 

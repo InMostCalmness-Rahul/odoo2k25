@@ -199,8 +199,8 @@ server/
 | `POST` | `/api/auth/signup`   | Register         |
 | `POST` | `/api/auth/login`    | Login            |
 | `POST` | `/api/auth/logout`   | Logout           |
-| `GET`  | `/api/user/me`       | Get self profile |
-| `PUT`  | `/api/user/update`   | Edit profile     |
+| `GET`  | `/api/users/me`       | Get self profile |
+| `PUT`  | `/api/users/update`   | Edit profile     |
 | `GET`  | `/api/users?skill=x` | Public search    |
 
 ### Swap

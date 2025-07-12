@@ -15,6 +15,7 @@ import Signup from './pages/Signup';
 import Profile from './pages/ProfilePage';
 import Requests from './pages/RequestsPage';
 import Browse from './pages/Browse';
+import UserProfileView from './pages/UserProfileView';
 
 function App() {
   const navigate = useNavigate();
@@ -73,6 +74,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <Browse onSwapRequest={handleSwapRequest} />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/user/:userId"
+            element={
+              <ProtectedRoute>
+                <UserProfileView />
               </ProtectedRoute>
             }
           />
