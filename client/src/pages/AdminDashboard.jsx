@@ -6,6 +6,7 @@ import AdminOverview from '../components/admin/AdminOverview';
 import AdminUsers from '../components/admin/AdminUsers';
 import AdminSwaps from '../components/admin/AdminSwaps';
 import AdminReports from '../components/admin/AdminReports';
+import UserProfileModal from '../components/admin/UserProfileModal';
 
 export default function AdminDashboard({ currentUser, onNavigate }) {
   const [activeTab, setActiveTab] = useState('overview');
@@ -14,6 +15,8 @@ export default function AdminDashboard({ currentUser, onNavigate }) {
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [showUserProfileModal, setShowUserProfileModal] = useState(false);
   const [userFilters, setUserFilters] = useState({
     status: 'all',
     role: 'all',
@@ -46,7 +49,7 @@ export default function AdminDashboard({ currentUser, onNavigate }) {
       }
       if (activeTab === 'swaps') {
         const swapsData = await getAllSwaps(swapFilters);
-        setSwapRequests(swapsData.swaps || []);
+        setSwapRequests(swapsData.requests || []);
       }
     } catch (error) {
       console.error('Failed to load admin data:', error);
@@ -58,7 +61,19 @@ export default function AdminDashboard({ currentUser, onNavigate }) {
 
   const handleBanUser = async (userId, shouldBan = true) => {
     try {
-      await banUser(userId, shouldBan);
+      let reason = '';
+      if (shouldBan) {
+        reason = prompt('Please provide a reason for banning this user:');
+        if (reason === null) return; // User cancelled
+        if (!reason.trim()) {
+          toast.error('Please provide a reason for banning');
+          return;
+        }
+      } else {
+        reason = 'Unbanned by admin';
+      }
+      
+      await banUser(userId, reason);
       toast.success(shouldBan ? 'User banned successfully' : 'User unbanned successfully');
       loadAdminData();
     } catch (error) {
@@ -83,11 +98,15 @@ export default function AdminDashboard({ currentUser, onNavigate }) {
   const handleUserAction = async (userId, action) => {
     try {
       if (action === 'ban') {
-        await handleBanUser(userId, true);
-      } else if (action === 'unban') {
-        await handleBanUser(userId, false);
+        // Find the user to check current status
+        const user = users.find(u => (u._id || u.id) === userId);
+        const shouldBan = user?.status !== 'banned';
+        await handleBanUser(userId, shouldBan);
       } else if (action === 'delete') {
         await handleDeleteUser(userId);
+      } else if (action === 'view') {
+        setSelectedUserId(userId);
+        setShowUserProfileModal(true);
       }
     } catch (error) {
       console.error(`Failed to ${action} user:`, error);
@@ -163,6 +182,16 @@ export default function AdminDashboard({ currentUser, onNavigate }) {
       {activeTab === 'reports' && (
         <AdminReports loading={loading} generateReport={generateReport} />
       )}
+
+      {/* User Profile Modal */}
+      <UserProfileModal
+        userId={selectedUserId}
+        isOpen={showUserProfileModal}
+        onClose={() => {
+          setShowUserProfileModal(false);
+          setSelectedUserId(null);
+        }}
+      />
     </div>
   );
 }

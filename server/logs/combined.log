@@ -304,3 +304,166 @@
 {"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:46:44.437Z"}
 {"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:46:44.439Z"}
 {"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:46:44.440Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:49:22.015Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:49:22.023Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:49:22.025Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:49:22.025Z"}
+{"level":"info","message":"User registered successfully: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:49:42.489Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket mweqmeVUD07ZFebDAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:49:42.702Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:50:10.509Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket pMa3omVbCRS2y5HzAAAD","service":"skillswap-api","timestamp":"2025-07-12T10:50:11.624Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket vJGhEOecYP8dWLbKAAAF","service":"skillswap-api","timestamp":"2025-07-12T10:50:11.701Z"}
+{"level":"info","message":"User logged out successfully","service":"skillswap-api","timestamp":"2025-07-12T10:50:15.479Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:50:15.504Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:50:15.512Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:50:17.104Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket 6wVmQxeyBKyZwZ25AAAH","service":"skillswap-api","timestamp":"2025-07-12T10:50:17.268Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:50:24.402Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket 9UKi5IRhlcWIF-dKAAAJ","service":"skillswap-api","timestamp":"2025-07-12T10:50:24.903Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket 7QOL0vZiyDbD8qm6AAAM","service":"skillswap-api","timestamp":"2025-07-12T10:51:25.295Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket CCdqaCdLQT2pX-qgAAAN","service":"skillswap-api","timestamp":"2025-07-12T10:51:25.304Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:52:04.765Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:52:07.507Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:52:07.510Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket CgbwASQTpiMThZzKAAAP","service":"skillswap-api","timestamp":"2025-07-12T10:52:08.084Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket lLca7D390dVZesKCAAAR","service":"skillswap-api","timestamp":"2025-07-12T10:52:34.209Z"}
+{"level":"info","message":"User banned by admin: 68723d712153b3ebe5fc6619","service":"skillswap-api","timestamp":"2025-07-12T10:52:57.210Z"}
+{"level":"info","message":"User unbanned by admin: 68723d712153b3ebe5fc6619","service":"skillswap-api","timestamp":"2025-07-12T10:53:00.528Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:53:06.871Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:53:06.872Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T10:54:08.358Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T10:54:08.363Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T10:54:08.366Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T10:54:08.366Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:54:27.815Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket JSckNSXlrXeVyqpFAAAB","service":"skillswap-api","timestamp":"2025-07-12T10:54:28.276Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:54:32.518Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket 4QLrptgrva2l5w-pAAAD","service":"skillswap-api","timestamp":"2025-07-12T10:54:33.664Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket t2z-uxpNCXqrxtYeAAAF","service":"skillswap-api","timestamp":"2025-07-12T10:54:33.746Z"}
+{"level":"info","message":"User profile updated: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T10:55:05.446Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T10:55:05.473Z"}
+{"level":"info","message":"Swap request created: 68723dc5842ab0dfa97aa98e -> 68723d712153b3ebe5fc6617","service":"skillswap-api","timestamp":"2025-07-12T10:55:18.335Z"}
+{"level":"info","message":"User 68723d712153b3ebe5fc6617 not connected, notification queued","service":"skillswap-api","timestamp":"2025-07-12T10:55:18.336Z"}
+{"level":"info","message":"User banned by admin: 68723d712153b3ebe5fc661a","service":"skillswap-api","timestamp":"2025-07-12T11:00:41.233Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:00:47.045Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T11:00:50.611Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T11:00:55.553Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T11:00:55.565Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T11:00:55.568Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T11:00:55.568Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:01:17.780Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket TCCVP5hxvwQX8tIjAAAB","service":"skillswap-api","timestamp":"2025-07-12T11:01:17.981Z"}
+{"level":"error","message":"Admin delete user error: Cannot destructure property 'confirm' of 'req.body' as it is undefined.","service":"skillswap-api","stack":"TypeError: Cannot destructure property 'confirm' of 'req.body' as it is undefined.\n    at deleteUser (C:\\Owais\\odoo2k25\\server\\controllers\\adminController.js:342:13)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:157:13)\n    at Route.dispatch (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:117:3)\n    at handle (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:435:11)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:295:15\n    at param (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:600:14)\n    at param (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:610:14)\n    at processParams (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:664:3)","timestamp":"2025-07-12T11:01:41.943Z"}
+{"level":"info","message":"User unbanned by admin: 68723d712153b3ebe5fc661a","service":"skillswap-api","timestamp":"2025-07-12T11:01:45.703Z"}
+{"level":"info","message":"Swap request 68723f16b24c60eed2a438b6 status updated to cancelled","service":"skillswap-api","timestamp":"2025-07-12T11:03:33.080Z"}
+{"data":{"otherUser":{"_id":"68723dc5842ab0dfa97aa98e","email":"oaak78692@gmail.com","feedbackCount":0,"id":"68723dc5842ab0dfa97aa98e","name":"Owais Ahmed Khan","profilePhoto":null},"requestId":"68723f16b24c60eed2a438b6","status":"cancelled"},"level":"info","message":"Notification sent to user 68723dc5842ab0dfa97aa98e: Your swap request has been cancelled","service":"skillswap-api","timestamp":"2025-07-12T11:03:33.081Z","title":"Swap Request Update","type":"swap_update"}
+{"level":"info","message":"User 68723d712153b3ebe5fc6617 not connected, notification queued","service":"skillswap-api","timestamp":"2025-07-12T11:03:33.088Z"}
+{"level":"info","message":"Swap request created: 68723dc5842ab0dfa97aa98e -> 68723d712153b3ebe5fc6617","service":"skillswap-api","timestamp":"2025-07-12T11:03:41.454Z"}
+{"level":"info","message":"User 68723d712153b3ebe5fc6617 not connected, notification queued","service":"skillswap-api","timestamp":"2025-07-12T11:03:41.454Z"}
+{"level":"info","message":"User profile updated: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:04:07.558Z"}
+{"level":"error","message":"Admin delete user error: Cannot destructure property 'confirm' of 'req.body' as it is undefined.","service":"skillswap-api","stack":"TypeError: Cannot destructure property 'confirm' of 'req.body' as it is undefined.\n    at deleteUser (C:\\Owais\\odoo2k25\\server\\controllers\\adminController.js:342:13)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:157:13)\n    at Route.dispatch (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:117:3)\n    at handle (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:435:11)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:295:15\n    at param (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:600:14)\n    at param (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:610:14)\n    at processParams (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:664:3)","timestamp":"2025-07-12T11:04:35.105Z"}
+{"level":"error","message":"Admin delete user error: Cannot destructure property 'confirm' of 'req.body' as it is undefined.","service":"skillswap-api","stack":"TypeError: Cannot destructure property 'confirm' of 'req.body' as it is undefined.\n    at deleteUser (C:\\Owais\\odoo2k25\\server\\controllers\\adminController.js:342:13)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:157:13)\n    at Route.dispatch (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:117:3)\n    at handle (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:435:11)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:295:15\n    at param (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:600:14)\n    at param (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:610:14)\n    at processParams (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\index.js:664:3)","timestamp":"2025-07-12T11:04:37.657Z"}
+{"level":"info","message":"User banned by admin: 68723d712153b3ebe5fc661a","service":"skillswap-api","timestamp":"2025-07-12T11:04:41.071Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:05:09.225Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T11:05:14.308Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T11:05:23.272Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T11:05:23.277Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T11:05:23.279Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T11:05:23.279Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:05:31.422Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket ZAA6r1x2kr-EtsvDAAAB","service":"skillswap-api","timestamp":"2025-07-12T11:05:31.614Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:05:36.645Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket K6diERIR8md-H3w6AAAD","service":"skillswap-api","timestamp":"2025-07-12T11:05:39.700Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket CxmUDRgGKe-Za9-XAAAF","service":"skillswap-api","timestamp":"2025-07-12T11:05:39.870Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T11:05:54.239Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T11:05:54.247Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T11:05:54.250Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T11:05:54.254Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket VrUhWlmGXZRFMXWVAAAD","service":"skillswap-api","timestamp":"2025-07-12T11:05:54.505Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket 6F633oHnbGcpufASAAAB","service":"skillswap-api","timestamp":"2025-07-12T11:05:54.724Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T11:06:42.720Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T11:06:42.726Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T11:06:42.729Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T11:06:42.730Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:06:43.533Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket dWSM14-1Ng5gHvclAAAB","service":"skillswap-api","timestamp":"2025-07-12T11:06:43.715Z"}
+{"level":"info","message":"User unbanned by admin: 68723d712153b3ebe5fc661a (Reason: Unbanned by admin)","service":"skillswap-api","timestamp":"2025-07-12T11:06:49.148Z"}
+{"level":"info","message":"User banned by admin: 68723d712153b3ebe5fc661a (Reason: boka choda)","service":"skillswap-api","timestamp":"2025-07-12T11:06:59.111Z"}
+{"level":"info","message":"User unbanned by admin: 68723d712153b3ebe5fc661a (Reason: Unbanned by admin)","service":"skillswap-api","timestamp":"2025-07-12T11:07:02.578Z"}
+{"level":"info","message":"User hard deleted by admin: 68723d712153b3ebe5fc661a (lisa.thompson@email.com)","service":"skillswap-api","timestamp":"2025-07-12T11:07:06.273Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T11:10:52.363Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T11:10:59.209Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T11:10:59.212Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T11:10:59.215Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T11:10:59.216Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket Qpz9_jcNpqOXinCcAAAB","service":"skillswap-api","timestamp":"2025-07-12T11:10:59.568Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:11:01.803Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket nM7TP_5S5GPO1vwQAAAD","service":"skillswap-api","timestamp":"2025-07-12T11:11:03.032Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket t2vdlDr-i8fFIT8RAAAF","service":"skillswap-api","timestamp":"2025-07-12T11:11:03.132Z"}
+{"level":"info","message":"User logged out successfully","service":"skillswap-api","timestamp":"2025-07-12T11:12:12.098Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:12:12.117Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:12:12.123Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T11:12:14.703Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T11:12:14.709Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T11:12:14.711Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T11:12:14.711Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T11:12:44.712Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T11:12:44.716Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T11:12:44.718Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T11:12:44.718Z"}
+{"level":"info","message":"User registered successfully: oaak92786@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:12:50.402Z"}
+{"level":"info","message":"User 6872433244b6b4b62871d989 connected via socket PcJbU6_xL_NZ4u1CAAAB","service":"skillswap-api","timestamp":"2025-07-12T11:12:50.614Z"}
+{"level":"info","message":"User logged out successfully","service":"skillswap-api","timestamp":"2025-07-12T11:13:18.460Z"}
+{"level":"info","message":"User 6872433244b6b4b62871d989 disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:13:18.475Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:13:27.635Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket fC_Vg5gzDkay220qAAAD","service":"skillswap-api","timestamp":"2025-07-12T11:13:27.853Z"}
+{"level":"info","message":"User logged out successfully","service":"skillswap-api","timestamp":"2025-07-12T11:13:54.615Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:13:54.643Z"}
+{"level":"info","message":"User logged in: oaak92786@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:13:59.347Z"}
+{"level":"info","message":"User 6872433244b6b4b62871d989 connected via socket GzFtFzzJygCh23GAAAAF","service":"skillswap-api","timestamp":"2025-07-12T11:13:59.501Z"}
+{"level":"info","message":"User profile updated: oaak92786@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:14:12.442Z"}
+{"level":"info","message":"User logged out successfully","service":"skillswap-api","timestamp":"2025-07-12T11:14:15.086Z"}
+{"level":"info","message":"User 6872433244b6b4b62871d989 disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:14:15.110Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:14:19.304Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket ZTWlqx3BnJI2sTu4AAAH","service":"skillswap-api","timestamp":"2025-07-12T11:14:19.497Z"}
+{"level":"info","message":"Swap request created: 68723dc5842ab0dfa97aa98e -> 6872433244b6b4b62871d989","service":"skillswap-api","timestamp":"2025-07-12T11:14:32.721Z"}
+{"level":"info","message":"User 6872433244b6b4b62871d989 not connected, notification queued","service":"skillswap-api","timestamp":"2025-07-12T11:14:32.722Z"}
+{"level":"info","message":"Swap request 6872410d2c51dc5d9b6abf69 status updated to cancelled","service":"skillswap-api","timestamp":"2025-07-12T11:14:37.743Z"}
+{"data":{"otherUser":{"_id":"68723dc5842ab0dfa97aa98e","email":"oaak78692@gmail.com","feedbackCount":0,"id":"68723dc5842ab0dfa97aa98e","name":"Owais Ahmed Khan","profilePhoto":null},"requestId":"6872410d2c51dc5d9b6abf69","status":"cancelled"},"level":"info","message":"Notification sent to user 68723dc5842ab0dfa97aa98e: Your swap request has been cancelled","service":"skillswap-api","timestamp":"2025-07-12T11:14:37.745Z","title":"Swap Request Update","type":"swap_update"}
+{"level":"info","message":"User 68723d712153b3ebe5fc6617 not connected, notification queued","service":"skillswap-api","timestamp":"2025-07-12T11:14:37.749Z"}
+{"level":"info","message":"User logged out successfully","service":"skillswap-api","timestamp":"2025-07-12T11:14:42.875Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:14:42.889Z"}
+{"level":"info","message":"User logged in: oaak92786@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:14:45.439Z"}
+{"level":"info","message":"User 6872433244b6b4b62871d989 connected via socket RF-9mHpY7za4EEy2AAAJ","service":"skillswap-api","timestamp":"2025-07-12T11:14:45.613Z"}
+{"level":"info","message":"User 6872433244b6b4b62871d989 disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:14:49.118Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T11:14:53.861Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T11:15:05.562Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T11:15:05.567Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T11:15:05.569Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T11:15:05.569Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T11:15:09.680Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T11:15:09.691Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T11:15:09.695Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T11:15:09.695Z"}
+{"level":"info","message":"User logged in: oaak92786@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:15:12.294Z"}
+{"level":"info","message":"User 6872433244b6b4b62871d989 connected via socket wdabwLLKLqMqo0gnAAAB","service":"skillswap-api","timestamp":"2025-07-12T11:15:12.463Z"}
+{"level":"info","message":"Swap request 6872439844b6b4b62871da17 status updated to accepted","service":"skillswap-api","timestamp":"2025-07-12T11:15:15.039Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e not connected, notification queued","service":"skillswap-api","timestamp":"2025-07-12T11:15:15.040Z"}
+{"data":{"otherUser":{"_id":"6872433244b6b4b62871d989","email":"oaak92786@gmail.com","feedbackCount":0,"id":"6872433244b6b4b62871d989","name":"Owais Ahmed Khan","profilePhoto":null},"requestId":"6872439844b6b4b62871da17","status":"accepted"},"level":"info","message":"Notification sent to user 6872433244b6b4b62871d989: You have accepted a swap request","service":"skillswap-api","timestamp":"2025-07-12T11:15:15.040Z","title":"Swap Request Update","type":"swap_update"}
+{"level":"info","message":"User logged out successfully","service":"skillswap-api","timestamp":"2025-07-12T11:15:20.904Z"}
+{"level":"info","message":"User 6872433244b6b4b62871d989 disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:15:20.916Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:15:23.322Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket UAOhb26llHfK0N43AAAD","service":"skillswap-api","timestamp":"2025-07-12T11:15:23.503Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:16:11.283Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket QfOAH-pw2hjkLFaEAAAF","service":"skillswap-api","timestamp":"2025-07-12T11:16:13.685Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:17:45.138Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T11:17:54.738Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T11:18:04.262Z"}
+{"level":"info","message":"Socket.io server initialized","service":"skillswap-api","timestamp":"2025-07-12T11:18:04.268Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T11:18:04.273Z"}
+{"level":"info","message":"Socket.io initialized and ready for real-time connections","service":"skillswap-api","timestamp":"2025-07-12T11:18:04.273Z"}
+{"level":"info","message":"User logged in: oaak78692@gmail.com","service":"skillswap-api","timestamp":"2025-07-12T11:18:06.399Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket Cyxs-EjU1VVC6JPNAAAB","service":"skillswap-api","timestamp":"2025-07-12T11:18:06.599Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:18:33.533Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e connected via socket fRLg0DV3aiZ2ilNLAAAD","service":"skillswap-api","timestamp":"2025-07-12T11:18:36.350Z"}
+{"level":"info","message":"User 68723dc5842ab0dfa97aa98e disconnected","service":"skillswap-api","timestamp":"2025-07-12T11:19:00.678Z"}

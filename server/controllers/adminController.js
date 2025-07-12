@@ -39,11 +39,34 @@ const getAllUsers = async (req, res) => {
     const skip = (parseInt(page) - 1) * parseInt(limit);
 
     // Get users
-    const users = await User.find(filter)
+    const usersRaw = await User.find(filter)
       .select('-password -refreshToken')
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(parseInt(limit));
+
+    // Transform users to match frontend expectations
+    const users = usersRaw.map(user => ({
+      id: user._id,
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      status: user.isActive ? 'active' : 'banned',
+      rating: user.rating || 0,
+      joinDate: user.createdAt,
+      swapCount: 0, // TODO: Calculate actual swap count
+      isActive: user.isActive,
+      location: user.location,
+      bio: user.bio,
+      skillsOffered: user.skillsOffered,
+      skillsWanted: user.skillsWanted,
+      availability: user.availability,
+      profilePhoto: user.profilePhoto,
+      lastLogin: user.lastLogin,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt
+    }));
 
     // Get total count
     const total = await User.countDocuments(filter);
@@ -410,11 +433,42 @@ const deleteUser = async (req, res) => {
   }
 };
 
+// Get user details for admin (bypasses privacy restrictions)
+const getUserDetails = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const user = await User.findById(userId)
+      .select('-password -refreshToken')
+      .populate('feedbacks.from', 'name');
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        error: 'User not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      user
+    });
+
+  } catch (error) {
+    logger.error('Admin get user details error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Internal server error'
+    });
+  }
+};
+
 module.exports = {
   getAllUsers,
   toggleUserBan,
   getAllSwapRequests,
   getPlatformStats,
   generateActivityReport,
-  deleteUser
+  deleteUser,
+  getUserDetails
 };

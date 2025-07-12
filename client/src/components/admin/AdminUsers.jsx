@@ -75,20 +75,24 @@ export default function AdminUsers({ users, searchTerm, setSearchTerm, userFilte
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex items-center space-x-2">
                       <button
-                        onClick={() => handleUserAction(user.id, 'ban')}
+                        onClick={() => handleUserAction(user.id || user._id, 'ban')}
                         className={`p-1 rounded hover:bg-gray-100 ${user.status === 'banned' ? 'text-green-600' : 'text-red-600'}`}
                         title={user.status === 'banned' ? 'Unban user' : 'Ban user'}
                       >
                         <Ban className="w-4 h-4" />
                       </button>
                       <button
-                        onClick={() => handleUserAction(user.id, 'delete')}
+                        onClick={() => handleUserAction(user.id || user._id, 'delete')}
                         className="p-1 rounded hover:bg-gray-100 text-red-600"
                         title="Delete user"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
-                      <button className="p-1 rounded hover:bg-gray-100 text-gray-600" title="View details">
+                      <button 
+                        onClick={() => handleUserAction(user.id || user._id, 'view')}
+                        className="p-1 rounded hover:bg-gray-100 text-gray-600" 
+                        title="View details"
+                      >
                         <Eye className="w-4 h-4" />
                       </button>
                     </div>

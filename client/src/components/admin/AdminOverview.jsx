@@ -2,6 +2,25 @@ import React from 'react';
 import { Users, UserCheck, MessageSquare, AlertTriangle } from 'lucide-react';
 
 export default function AdminOverview({ stats }) {
+  // Show loading state if stats are not available yet
+  if (!stats) {
+    return (
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="bg-white rounded-xl shadow-sm border p-6">
+              <div className="animate-pulse">
+                <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+                <div className="h-8 bg-gray-200 rounded w-1/3 mb-2"></div>
+                <div className="h-3 bg-gray-200 rounded w-2/3"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       {/* Stats Cards */}
@@ -23,7 +42,12 @@ export default function AdminOverview({ stats }) {
             <div>
               <p className="text-sm font-medium text-gray-600">Active Users</p>
               <p className="text-2xl font-bold text-gray-900">{stats?.users.active}</p>
-              <p className="text-sm text-gray-500">{Math.round((stats?.users.active / stats?.users.total) * 100)}% of total</p>
+              <p className="text-sm text-gray-500">
+                {stats?.users.total > 0 
+                  ? `${Math.round((stats.users.active / stats.users.total) * 100)}% of total`
+                  : 'N/A'
+                }
+              </p>
             </div>
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
               <UserCheck className="w-6 h-6 text-green-600" />

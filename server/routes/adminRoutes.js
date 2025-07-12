@@ -9,6 +9,7 @@ router.use(requireAdmin);
 
 // Admin routes
 router.get('/users', adminController.getAllUsers);
+router.get('/user/:userId', adminController.getUserDetails);
 router.patch('/user/:userId/ban', adminController.toggleUserBan);
 router.delete('/user/:userId', adminController.deleteUser);
 router.get('/swaps', adminController.getAllSwapRequests);
