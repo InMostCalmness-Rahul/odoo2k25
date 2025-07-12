@@ -1,12 +1,23 @@
 # SkillSwap Platform API Documentation
 
 ## Overview
-This is a RESTful API for the SkillSwap Platform, built with Express.js, MongoDB, and JWT authentication.
+This is a RESTful API for the SkillSwap Platform, built with Express.js, MongoDB, and JWT authentication. The API now includes real-time features via Socket.io for notifications and live updates.
 
 ## Base URL
 ```
 http://localhost:5000/api
 ```
+
+## Real-time Features
+The API includes Socket.io integration for real-time notifications:
+- **Socket URL**: `http://localhost:5000`
+- **Authentication**: JWT token required in socket handshake
+- **Events**: New swap requests, status updates, feedback notifications
+
+### Socket.io Events
+- `notification` - Real-time notifications
+- `user_status_update` - Online/offline status updates  
+- `user_typing` / `user_stopped_typing` - Typing indicators
 
 ## Authentication
 Most endpoints require JWT authentication. Include the access token in the Authorization header:

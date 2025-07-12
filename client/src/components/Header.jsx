@@ -9,6 +9,7 @@ import {
   MessageSquare,
   LogOut,
   Shield} from 'lucide-react';
+import NotificationDropdown from './NotificationDropdown';
 
 export default function Header({ currentUser, onLogout }) {
   const { pathname } = useLocation();
@@ -56,6 +57,9 @@ export default function Header({ currentUser, onLogout }) {
 
             {currentUser ? (
               <div className="flex items-center space-x-4">
+                {/* Notifications */}
+                <NotificationDropdown />
+                
                 <div className="flex items-center space-x-2">
                   <img
                     src={currentUser.profilePhoto}

@@ -2,6 +2,7 @@ const SwapRequest = require('../models/SwapRequest');
 const User = require('../models/User');
 const { validationResult } = require('express-validator');
 const logger = require('../utils/logger');
+const socketManager = require('../utils/socketManager');
 
 // Create a new swap request
 const createSwapRequest = async (req, res) => {
@@ -98,6 +99,9 @@ const createSwapRequest = async (req, res) => {
     ]);
 
     logger.info(`Swap request created: ${fromUser} -> ${toUser}`);
+
+    // Send real-time notification
+    socketManager.notifyNewSwapRequest(swapRequest);
 
     res.status(201).json({
       success: true,
@@ -304,6 +308,9 @@ const updateSwapRequestStatus = async (req, res) => {
     ]);
 
     logger.info(`Swap request ${requestId} status updated to ${status}`);
+
+    // Send real-time notification about status update
+    socketManager.notifySwapUpdate(updatedRequest);
 
     res.status(200).json({
       success: true,

@@ -32,6 +32,6 @@ export const logoutAPI = async () => {
  * 👤 Get current authenticated user
  */
 export const getMeAPI = async () => {
-  const { data } = await axios.get("/user/me");
+  const { data } = await axios.get("/users/me");
   return data;
 };

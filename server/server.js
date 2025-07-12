@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const http = require('http');
 const app = require('./app');
 const logger = require('./utils/logger');
+const socketManager = require('./utils/socketManager');
 
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/skillswap';
@@ -10,9 +12,16 @@ mongoose.connect(MONGODB_URI)
   .then(() => {
     logger.info('Connected to MongoDB successfully');
     
+    // Create HTTP server
+    const server = http.createServer(app);
+    
+    // Initialize Socket.io
+    socketManager.initialize(server);
+    
     // Start server
-    const server = app.listen(PORT, () => {
+    server.listen(PORT, () => {
       logger.info(`Server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
+      logger.info('Socket.io initialized and ready for real-time connections');
     });
 
     // Graceful shutdown

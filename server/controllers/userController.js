@@ -2,6 +2,7 @@ const User = require('../models/User');
 const { validationResult } = require('express-validator');
 const logger = require('../utils/logger');
 const { deleteImage, extractPublicId } = require('../config/cloudinary');
+const socketManager = require('../utils/socketManager');
 
 // Get current user profile
 const getCurrentUser = async (req, res) => {
@@ -241,17 +242,22 @@ const addFeedback = async (req, res) => {
     }
 
     // Add feedback
-    user.feedbacks.push({
+    const newFeedback = {
       from: fromUserId,
       rating,
       comment: comment || ''
-    });
+    };
+    
+    user.feedbacks.push(newFeedback);
 
     // Update user rating
     user.updateRating();
     await user.save();
 
     logger.info(`Feedback added by ${req.user.email} for user ${userId}`);
+
+    // Send real-time notification about new feedback
+    socketManager.notifyNewFeedback(newFeedback, user, req.user);
 
     res.status(201).json({
       success: true,
