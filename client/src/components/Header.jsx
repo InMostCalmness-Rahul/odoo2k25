@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Menu, X, Home, UserIcon, MessageSquare, LogOut } from 'lucide-react';
+import { User, Menu, X, Home, UserIcon, MessageSquare, LogOut, Shield } from 'lucide-react';
 
 export function Header({ currentUser, currentPage, onNavigate, onLogout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -9,6 +9,9 @@ export function Header({ currentUser, currentPage, onNavigate, onLogout }) {
     ...(currentUser ? [
       { name: 'Profile', page: 'profile', icon: UserIcon },
       { name: 'Requests', page: 'requests', icon: MessageSquare },
+      ...(currentUser.role === 'admin' ? [
+        { name: 'Admin', page: 'admin', icon: Shield }
+      ] : [])
     ] : [])
   ];
 
