@@ -15,6 +15,7 @@ import Signup from './pages/Signup';
 import Profile from './pages/ProfilePage';
 import Requests from './pages/RequestsPage';
 import Browse from './pages/Browse';
+import UserProfileView from './pages/UserProfileView';
 
 function App() {
   const navigate = useNavigate();
@@ -77,6 +78,15 @@ function App() {
             }
           />
 
+          <Route
+            path="/user/:userId"
+            element={
+              <ProtectedRoute>
+                <UserProfileView />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="*" element={<div className="text-center text-xl font-bold text-red-500">404 - Page Not Found</div>} />
         </Routes>
       </main>
@@ -87,24 +97,10 @@ function App() {
           toUser={selectedUser}
           onClose={() => setShowSwapModal(false)}
           onSubmit={(data) => {
-            notifySwapRequest(selectedUser.name);
             setShowSwapModal(false);
           }}
         />
       )}
-
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </div>
   );
 }
