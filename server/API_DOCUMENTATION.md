@@ -37,7 +37,7 @@ Register a new user account.
 {
   "name": "John Doe",
   "email": "john@example.com",
-  "password": "password123",
+  "password": "Password123",
   "location": "New York, NY",
   "skillsOffered": ["JavaScript", "Guitar"],
   "skillsWanted": ["Photography", "Spanish"],
@@ -62,7 +62,7 @@ Authenticate a user and get access token.
 ```json
 {
   "email": "john@example.com",
-  "password": "password123"
+  "password": "Password123"
 }
 ```
 
