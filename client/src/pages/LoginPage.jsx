@@ -1,7 +1,40 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
-export default function LoginPage({ onLogin, onNavigate }) {
+// Move PasswordField outside the component to prevent re-creation on each render
+const PasswordField = ({ id, label, value, setValue, show, setShow, placeholder }) => (
+  <div>
+    <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-2">
+      {label}
+    </label>
+    <div className="relative">
+      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+      <input
+        id={id}
+        type={show ? 'text' : 'password'}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder={placeholder}
+        className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        required
+      />
+      <button
+        type="button"
+        onClick={() => setShow(!show)}
+        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+      >
+        {show ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+      </button>
+    </div>
+  </div>
+);
+  
+export default function LoginPage() {
+  const navigate = useNavigate();
+  const { login, signup, isLoading } = useAuth();
+  
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,7 +42,7 @@ export default function LoginPage({ onLogin, onNavigate }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) return;
 
@@ -18,35 +51,19 @@ export default function LoginPage({ onLogin, onNavigate }) {
       return;
     }
 
-    onLogin(email, password);
+    try {
+      if (isLogin) {
+        await login(email, password);
+      } else {
+        await signup({ email, password });
+      }
+      // Navigation will happen automatically via AuthContext and ProtectedRoute
+      navigate('/');
+    } catch (error) {
+      // Error handling is done in AuthContext with toast
+      console.error('Authentication error:', error);
+    }
   };
-
-  const PasswordField = ({ id, label, value, setValue, show, setShow, placeholder }) => (
-    <div>
-      <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-2">
-        {label}
-      </label>
-      <div className="relative">
-        <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-        <input
-          id={id}
-          type={show ? 'text' : 'password'}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder={placeholder}
-          className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          required
-        />
-        <button
-          type="button"
-          onClick={() => setShow(!show)}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-        >
-          {show ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-        </button>
-      </div>
-    </div>
-  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -128,9 +145,10 @@ export default function LoginPage({ onLogin, onNavigate }) {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+              disabled={isLoading}
+              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLogin ? 'Sign In' : 'Create Account'}
+              {isLoading ? 'Please wait...' : (isLogin ? 'Sign In' : 'Create Account')}
             </button>
           </form>
 
@@ -150,7 +168,7 @@ export default function LoginPage({ onLogin, onNavigate }) {
           {/* Back to Home */}
           <div className="mt-4 text-center">
             <button
-              onClick={() => onNavigate('home')}
+              onClick={() => navigate('/')}
               className="text-sm text-gray-500 hover:text-gray-700 hover:underline"
             >
               ← Back to Home
