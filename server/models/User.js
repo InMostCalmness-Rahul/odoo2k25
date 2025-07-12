@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Password is required'],
     minlength: [6, 'Password must be at least 6 characters long'],
-    select: false // Don't include password in query results by default
+    select: false // prevent password in query results by default
   },
   location: {
     type: String,
@@ -102,7 +102,6 @@ const userSchema = new mongoose.Schema({
 });
 
 // Indexes for performance
-// Note: email index is already created by unique: true property
 userSchema.index({ skillsOffered: 1 });
 userSchema.index({ skillsWanted: 1 });
 userSchema.index({ location: 1 });

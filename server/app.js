@@ -9,7 +9,6 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const swapRoutes = require('./routes/swapRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-const testRoutes = require('./routes/testRoutes');
 
 const errorHandler = require('./middleware/errorHandler');
 const logger = require('./utils/logger');
@@ -65,7 +64,6 @@ app.get('/api/health', (req, res) => {
 });
 
 // API routes
-app.use('/api/test', testRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/swap', swapRoutes);

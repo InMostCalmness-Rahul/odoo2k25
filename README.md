@@ -2,6 +2,17 @@
 
 A MERN-based **Skill Swap Platform** where users can list their skills, request swaps from others, manage interactions, and give feedback. Admins monitor misuse and moderate content.
 
+
+## 👥 Development Team
+
+| Name         | Role                        | Email / Contact         |
+|--------------|-----------------------------|------------------------|
+| Owais        | Fullstack Architect         |   oaak78692@gmail.com  |
+| Sujal        | Frontend Builder            |                        |
+| Rahul        | Data Integrator             |                        |
+| Sonia        | QA + UI Polish + Docs       |                        |
+
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -34,8 +45,8 @@ npm run dev
 
 ### 4. Access the Application
 - Frontend: http://localhost:5173
-- Backend API: http://localhost:5000
-- API Health Check: http://localhost:5000/health
+- Backend API: http://localhost:5000/api
+- API Health Check: http://localhost:5000/api/health
 
 ## 📁 Project Structure
 
@@ -140,16 +151,6 @@ VITE_API_URL=http://localhost:5000/api
 ```
 
 
-## 👥 Development Team
-
-| Name         | Role                        | Email / Contact         |
-|--------------|-----------------------------|------------------------|
-| Dev Owais    | Fullstack Architect         |                        |
-| Dev A        | Frontend Builder            |                        |
-| Dev B        | Data Integrator             |                        |
-| Dev C        | QA + UI Polish + Docs       |                        |
-
-<!-- Add your real names, emails, GitHub links, or other contact info above -->
 
 ## 📋 Development Status
 
@@ -193,11 +194,10 @@ npm run preview # Preview production build
 
 ## 🤝 Contributing
 
-1. Follow the role-specific guidelines in `planning & docs/roles/`
-2. Use the existing code structure and patterns
-3. Ensure all code passes linting (ESLint/Prettier)
-4. Test thoroughly before submitting PRs
-5. Update documentation for new features
+1. Use the existing code structure and patterns
+2. Ensure all code passes linting (ESLint/Prettier)
+3. Test thoroughly before submitting PRs
+4. Update documentation for new features
 
 ## 📄 License
 

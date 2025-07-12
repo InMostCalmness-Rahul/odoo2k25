@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "extends": ["eslint:recommended"],
+  "ignorePatterns": ["build/", "dist/", "node_modules/"],
+  "env": {
+    "node": true,
+    "es2021": true
+  }
+}

@@ -38,3 +38,20 @@
 {"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T04:36:36.543Z"}
 {"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T04:36:47.619Z"}
 {"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T04:36:47.625Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T04:53:13.313Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T04:53:13.317Z"}
+{"level":"info","message":"User registered successfully: testuser@example.com","service":"skillswap-api","timestamp":"2025-07-12T05:03:03.573Z"}
+{"level":"info","message":"User logged in: testuser@example.com","service":"skillswap-api","timestamp":"2025-07-12T05:03:41.244Z"}
+{"level":"error","message":"Update profile error: Cannot convert undefined or null to object","service":"skillswap-api","stack":"TypeError: Cannot convert undefined or null to object\n    at updateProfile (C:\\Owais\\odoo2k25\\server\\controllers\\userController.js:38:5)\n    at Layer.handleRequest (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\Owais\\odoo2k25\\server\\node_modules\\router\\lib\\route.js:157:13)\n    at middleware (C:\\Owais\\odoo2k25\\server\\node_modules\\express-validator\\lib\\middlewares\\check.js:16:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-07-12T05:06:02.349Z"}
+{"level":"info","message":"User profile updated: testuser@example.com","service":"skillswap-api","timestamp":"2025-07-12T05:06:17.284Z"}
+{"level":"info","message":"Swap request created: 6871ec870b60cc79c35e4629 -> 6871e446322e8bd64dd7e7d2","service":"skillswap-api","timestamp":"2025-07-12T05:09:29.293Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T05:35:26.056Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T05:35:26.066Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T05:36:26.227Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T05:36:26.231Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T05:37:43.726Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T05:37:43.731Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T05:38:19.824Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T05:38:19.830Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T05:38:30.162Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T05:38:30.166Z"}
