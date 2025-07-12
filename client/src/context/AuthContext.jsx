@@ -14,10 +14,12 @@ export const AuthProvider = ({ children }) => {
   const loadUser = async () => {
     try {
       setIsLoading(true);
-      const user = await getMeAPI(); // ✅ fixed
+      const user = await getMeAPI();
       setUser(user);
       setIsAuthenticated(true);
     } catch (err) {
+      // Handle 401 errors silently (user not authenticated)
+      // Since we're using HttpOnly cookies, 401 just means not authenticated
       setUser(null);
       setIsAuthenticated(false);
     } finally {
