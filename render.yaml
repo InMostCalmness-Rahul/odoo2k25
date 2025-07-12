@@ -35,7 +35,7 @@ services:
     buildCommand: cd client && npm install && npm run build
     staticPublishPath: ./client/dist
     envVars:
-      - key: VITE_API_BASE_URL
+      - key: VITE_API_URL
         value: https://skillswap-backend.onrender.com/api
 
 databases:
