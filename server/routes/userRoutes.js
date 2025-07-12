@@ -1,36 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const userController = require('../controllers/userController');
+const { auth } = require('../middleware/auth');
+const { validateProfileUpdate, validateFeedback } = require('../middleware/validation');
 
-// Placeholder for user routes
-// TODO: Implement actual user controller methods and auth middleware
+// Authenticated user routes (for current user operations) - MUST come first
+router.get('/me', auth, userController.getCurrentUser);
+router.put('/me', auth, validateProfileUpdate, userController.updateProfile);
+router.delete('/me', auth, userController.deleteAccount);
 
-router.get('/me', (req, res) => {
-  res.status(501).json({ 
-    message: 'Get current user endpoint - To be implemented',
-    endpoint: 'GET /api/user/me'
-  });
-});
+// Public user browsing routes - literal routes first, then parameterized
+router.get('/', userController.getPublicUsers);
 
-router.put('/update', (req, res) => {
-  res.status(501).json({ 
-    message: 'Update user profile endpoint - To be implemented',
-    endpoint: 'PUT /api/user/update'
-  });
-});
+// Parameterized routes MUST come after literal routes
+router.get('/:userId', userController.getUserById);
+router.post('/:userId/feedback', auth, validateFeedback, userController.addFeedback);
 
-router.get('/', (req, res) => {
-  res.status(501).json({ 
-    message: 'Get public users endpoint - To be implemented',
-    endpoint: 'GET /api/users',
-    note: 'Supports query params: skill, location, availability'
-  });
-});
-
-router.get('/:id', (req, res) => {
-  res.status(501).json({ 
-    message: 'Get user by ID endpoint - To be implemented',
-    endpoint: 'GET /api/users/:id'
-  });
-});
+module.exports = router;
 
 module.exports = router;

@@ -1,35 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const authController = require('../controllers/authController');
+const { validateSignup, validateLogin } = require('../middleware/validation');
 
-// Placeholder for auth routes
-// TODO: Implement actual auth controller methods
-
-router.post('/signup', (req, res) => {
-  res.status(501).json({ 
-    message: 'Signup endpoint - To be implemented',
-    endpoint: 'POST /api/auth/signup'
-  });
-});
-
-router.post('/login', (req, res) => {
-  res.status(501).json({ 
-    message: 'Login endpoint - To be implemented',
-    endpoint: 'POST /api/auth/login'
-  });
-});
-
-router.post('/logout', (req, res) => {
-  res.status(501).json({ 
-    message: 'Logout endpoint - To be implemented',
-    endpoint: 'POST /api/auth/logout'
-  });
-});
-
-router.post('/refresh', (req, res) => {
-  res.status(501).json({ 
-    message: 'Refresh token endpoint - To be implemented',
-    endpoint: 'POST /api/auth/refresh'
-  });
-});
+// Auth routes
+router.post('/signup', validateSignup, authController.signup);
+router.post('/login', validateLogin, authController.login);
+router.post('/logout', authController.logout);
+router.post('/refresh', authController.refreshToken);
 
 module.exports = router;

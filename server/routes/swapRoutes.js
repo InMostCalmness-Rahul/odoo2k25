@@ -1,43 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const swapController = require('../controllers/swapController');
+const { auth } = require('../middleware/auth');
+const { validateSwapRequest, validateSwapStatusUpdate } = require('../middleware/validation');
 
-// Placeholder for swap routes
-// TODO: Implement actual swap controller methods and auth middleware
+// All swap routes require authentication
+router.use(auth);
 
-router.post('/', (req, res) => {
-  res.status(501).json({ 
-    message: 'Create swap request endpoint - To be implemented',
-    endpoint: 'POST /api/swap'
-  });
-});
-
-router.get('/', (req, res) => {
-  res.status(501).json({ 
-    message: 'Get user swap requests endpoint - To be implemented',
-    endpoint: 'GET /api/swap',
-    note: 'Returns both sent and received requests for authenticated user'
-  });
-});
-
-router.get('/:id', (req, res) => {
-  res.status(501).json({ 
-    message: 'Get swap request by ID endpoint - To be implemented',
-    endpoint: 'GET /api/swap/:id'
-  });
-});
-
-router.patch('/:id', (req, res) => {
-  res.status(501).json({ 
-    message: 'Update swap request (accept/reject) endpoint - To be implemented',
-    endpoint: 'PATCH /api/swap/:id'
-  });
-});
-
-router.delete('/:id', (req, res) => {
-  res.status(501).json({ 
-    message: 'Delete swap request endpoint - To be implemented',
-    endpoint: 'DELETE /api/swap/:id'
-  });
-});
+// Swap request routes
+router.post('/', validateSwapRequest, swapController.createSwapRequest);
+router.get('/', swapController.getUserSwapRequests);
+router.get('/:requestId', swapController.getSwapRequestById);
+router.patch('/:requestId', validateSwapStatusUpdate, swapController.updateSwapRequestStatus);
+router.delete('/:requestId', swapController.deleteSwapRequest);
 
 module.exports = router;

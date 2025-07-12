@@ -1,42 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const adminController = require('../controllers/adminController');
+const { auth, requireAdmin } = require('../middleware/auth');
 
-// Placeholder for admin routes
-// TODO: Implement actual admin controller methods and auth middleware
+// All admin routes require authentication and admin role
+router.use(auth);
+router.use(requireAdmin);
 
-router.get('/users', (req, res) => {
-  res.status(501).json({ 
-    message: 'Get all users (admin) endpoint - To be implemented',
-    endpoint: 'GET /api/admin/users'
-  });
-});
-
-router.patch('/user/:id/ban', (req, res) => {
-  res.status(501).json({ 
-    message: 'Ban/unban user endpoint - To be implemented',
-    endpoint: 'PATCH /api/admin/user/:id/ban'
-  });
-});
-
-router.get('/swaps', (req, res) => {
-  res.status(501).json({ 
-    message: 'Get all swap requests (admin) endpoint - To be implemented',
-    endpoint: 'GET /api/admin/swaps'
-  });
-});
-
-router.get('/reports', (req, res) => {
-  res.status(501).json({ 
-    message: 'Download activity reports endpoint - To be implemented',
-    endpoint: 'GET /api/admin/reports'
-  });
-});
-
-router.post('/broadcast', (req, res) => {
-  res.status(501).json({ 
-    message: 'Send broadcast message endpoint - To be implemented',
-    endpoint: 'POST /api/admin/broadcast'
-  });
-});
+// Admin routes
+router.get('/users', adminController.getAllUsers);
+router.patch('/user/:userId/ban', adminController.toggleUserBan);
+router.delete('/user/:userId', adminController.deleteUser);
+router.get('/swaps', adminController.getAllSwapRequests);
+router.get('/stats', adminController.getPlatformStats);
+router.get('/reports', adminController.generateActivityReport);
 
 module.exports = router;
