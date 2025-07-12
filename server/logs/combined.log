@@ -57,3 +57,7 @@
 {"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T05:38:30.166Z"}
 {"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T05:44:58.524Z"}
 {"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T05:44:58.530Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T05:47:27.408Z"}
+{"level":"info","message":"Connected to MongoDB successfully","service":"skillswap-api","timestamp":"2025-07-12T05:47:34.461Z"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"skillswap-api","timestamp":"2025-07-12T05:47:34.467Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"skillswap-api","timestamp":"2025-07-12T06:10:56.735Z"}

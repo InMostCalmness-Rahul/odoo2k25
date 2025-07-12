@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
@@ -7,6 +9,7 @@ import { LoginPage } from './pages/LoginPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { RequestsPage } from './pages/RequestsPage';
 import { SwapRequestModal } from './components/SwapRequestModal';
+import { notifyLoginSuccess, notifyLogout, notifySwapRequest } from './utils/toast';
 
 function AppWrapper() {
   return (
@@ -35,11 +38,13 @@ function App() {
       location: 'San Francisco, CA',
     };
     setCurrentUser(mockUser);
+    notifyLoginSuccess(mockUser.name);
     navigate('/profile'); // go to profile after login
   };
 
   const handleLogout = () => {
     setCurrentUser(null);
+    notifyLogout();
     navigate('/'); // go to home after logout
   };
 
@@ -67,6 +72,7 @@ function App() {
             element={
               <HomePage
                 currentUser={currentUser}
+                onNavigate={handleNavigate}
                 onSwapRequest={handleSwapRequest}
               />
             }
@@ -77,6 +83,7 @@ function App() {
             element={
               <LoginPage
                 onLogin={handleLogin}
+                onNavigate={handleNavigate}
               />
             }
           />
@@ -113,11 +120,25 @@ function App() {
           fromUser={currentUser}
           toUser={selectedUser}
           onClose={() => setShowSwapModal(false)}
-          onSubmit={() => {
+          onSubmit={(data) => {
+            notifySwapRequest(selectedUser.name);
             setShowSwapModal(false);
           }}
         />
       )}
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }
